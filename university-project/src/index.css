@@ -1,0 +1,227 @@
+body{
+  background-color: #e3eadb;
+  color: #18c16c;
+  margin: 0;
+  
+}
+.siteIntroductionContainer{
+  margin-top: 100px;
+  /* background-color: #55c68d; */
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  border-radius: 30px;
+  padding: 0;
+}
+.siteIntroductionImage img{
+  border-radius: 30px;
+}
+.siteIntroductionText{
+  text-align: right;
+  font-size: 50px;
+  font-weight: bold;
+  padding: 50px;
+}
+.siteIntroductionText h1{
+  margin-bottom: 10px;
+
+}
+.siteIntroductionText h3{
+  margin-top: 10px;
+  color: black;
+}
+.siteIntroductionText button{
+  font-size: 30px;
+  font-weight: bold;
+  background-color: #00ff62;
+  padding: 15px 20px;
+  border: 2px solid #18c16c;
+  border-radius: 20px;
+}
+.contentContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 100%;
+  padding: 10px 30px;
+  margin: 40px;
+  /* background-color: aliceblue; */
+}
+.headerContainer{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: fixed; /* Key property for fixing header's position */
+  top: 0; /* Aligns the header at the top of the viewport */
+  left: 0; /* Aligns the header to the left of the viewport */
+  z-index: 1000; 
+}
+.headerTop{
+  background-color: #F7FFEC;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15%;
+  box-shadow: 0 0 10px 0 black;
+  z-index: 2;
+}
+.navBar{
+  background-color: #bff475;
+  width: 40%;
+  margin: auto;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  z-index: 1;
+  color: #18c16c;
+}
+.navBar ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0 20px;
+}
+.navBar ul li{
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+.SubscriptionButton{
+  background: none;
+  border: 2px solid #18c16c;
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: auto;
+  padding: 10px 15px;
+  color: #D49A42;
+  border-radius: 10px;
+}
+.logInButton{
+  color: #D49A42;
+  border: 2px solid #D49A42;
+  padding: 5px 15px;
+  font-weight: bold;
+  margin-right: 20px;
+  font-size: 20px;
+  border-radius: 15px;
+  background:none;
+}
+.searchBar{
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  overflow: hidden;
+}
+.searchBar input{
+  font-weight: bold;
+  padding: 5px 10px;
+  font-size: 20px;
+  text-align: right;
+  
+  /* height: 15px; */
+}
+.searchBar img{
+  height: 40px;
+}
+.headerLogoImage{
+  width: 70px;
+}
+/* Avertising List */
+.advertisingListContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  /* background-color: aliceblue; */
+  margin: auto;
+  padding: 10px 30px;
+  margin: 40px;
+  border-radius: 4px;
+  text-align: right;
+  width: 70%;
+  
+}
+.advertisingListHeader{
+  background-color: #F7FFEC;
+  padding: 1px 10px;
+  width: 15%;
+  text-align: center;
+  margin-bottom: 0px;
+  border-top-left-radius: 10px;   /* Sets the radius for the top-left corner */
+  border-top-right-radius: 10px;
+}
+
+.advertisingListBody{
+  background-color: #F7FFEC;
+  /* border: 5px dashed aquamarine; */
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: 90%;
+  /* background-color: aqua; */
+  border-top-right-radius: 0px;
+  margin-top: 0;
+  
+}
+.sortingContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  
+}
+.sortingOptionSelector{
+  background-color: #a5a7a7;
+  color: rgb(4, 59, 59);
+  margin: 10px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  width: 130px;
+  text-align: right;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: background-color 0.5s;
+  
+}
+
+.sortingOptionSelector :hover{
+  background-color: #18c16c;
+}
+.sortingContainer p{
+  font-size: 20px;
+  font-weight: bold;
+}
+.advertisingList{
+  /* padding: 10px 20px; */
+  border-radius: 10px;
+  /* width: 90%; */
+  list-style: none;
+  
+}
+
+.servicesContainer{
+  text-align: right;
+  width: 70%;
+}
+.servicesContainer h1{
+  font-weight: bold;
+  font-size: 40px;
+}
+.servicesList{
+  list-style: none;
+  text-align: center;
+}
+.service{
+  display: inline-block;
+  background-color: #F7FFEC;
+  font-size: 30px;
+  margin: 20px 20px;
+  padding: 20px 20px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+.service p{
+  margin: 0;
+}
+
