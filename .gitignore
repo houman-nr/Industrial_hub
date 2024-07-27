@@ -8,7 +8,7 @@ __pycache__/
 
 # Ignore virtual environment
 venv/
-python12Project/venv/Lib/
+python12Project/venv/Lib/site-packages/
 # Ignore logs
 logs/
 
