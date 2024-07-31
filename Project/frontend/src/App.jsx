@@ -1,17 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import MapComponent from './MapComponent'
+import React,{useState,useRef,useEffect} from 'react';
+import MapComponent from './MapComponent';
+import Header from './Header';
+import ResponsiveLoginForm from "./ResponsiveLoginForm/ResponsiveLoginForm";
+import { loginPopUpContext } from './Contexts/LoginPopUpContext';
 
 
 function App() {
-  return(
+  const [openPopUp, setOpenPopUp] = useState(false);
+
+  return (
     <div>
-      <h1>OpenStreetMap With Django and React</h1>
-      <MapComponent />
+      <loginPopUpContext.Provider value={{setOpenPopUp}}>
+        <main>
+          <Header></Header>
+        </main>
+        <ResponsiveLoginForm trigger={openPopUp}></ResponsiveLoginForm>
+      </loginPopUpContext.Provider>
     </div>
   );
 }
 
-export default App
+export default App;
