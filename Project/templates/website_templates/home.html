@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+{%load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Home</title>
+</head>
+
+<body>
+    <ul class="formCircles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+<div class="navBarSideBar">
+    <div class="profileOptions">
+        <ul>
+            <li><a href="">تماس با ما</a></li>
+            <li><a href="">پنل فروشندگان و خریداران</a></li>
+            <li><a href="">لیست شرکت ها</a></li>
+        </ul>
+    </div>
+</div>
+    <div class='Header'>
+        <div class='top'>
+            <label for="navBarSidBarCheckBox">
+                <input type="checkbox" id="navBarSidBarCheckBox">
+                <button class="navbarCollapseButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                    </svg>
+                </button>
+            </label>
+            <img class="headerLogoImage" src="Logo.png" alt="لوگو" />
+            <input type="checkbox" id="openForm">
+            <button class='LoginSignUpButton'>
+                <a href="#" class='loginButton'>ورود</a>
+                <p>/</p>
+                <a href="#" class='signUpButton'>ثبت نام</a>
+                <div class='loginSignUpHover'></div>
+            </button>
+        </div>
+        
+        <ul class='HeaderNavBarContainer'>
+            <li><a href="">تماس با ما</a></li>
+            <li><a href="">پنل فروشندگان و خریداران</a></li>
+            <li><a href="">لیست شرکت ها</a></li>
+        </ul>
+        
+        <div class='searchBarContainer'>
+            <a href="" class='searchBarIcon'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                </svg>
+            </a>
+            <input type="text"  placeholder='جست و جو......' class='searchBarInput'/>
+        </div>
+    </div>
+    <div>
+        
+    </div>
+
+<div class="homePageBody">
+    
+    <div class="company-list">
+        <header>
+            <h3>
+                آخرین شرکت های ثبت شده
+            </h3>
+        </header>
+        <div class="companies">
+            <a class="company-card">
+                <div class="company-image">
+                    <img src="company1.jpg" alt="Company 1" >
+                </div>
+                <div class="company-info">
+                    <h2 class="company-name">شرکت 1</h2>
+                    <p class="company-registered">تاریخ ثبت: 2020-01-01</p>
+                    <p class="company-address">آدرس:</p>
+                    <div class="comentAndView">
+                        <div class="view">
+                            <i class="bi bi-eye"></i>
+                            <p>2</p>
+                        </div>
+                        <div class="comment">
+                            <i class="bi bi-chat"></i>
+                            <p>2</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="company-card">
+                <div class="company-image">
+                    <img src="company1.jpg" alt="Company 1" >
+                </div>
+                <div class="company-info">
+                    <h2 class="company-name">شرکت 1</h2>
+                    <p class="company-registered">تاریخ ثبت: 2020-01-01</p>
+                    <p class="company-address">آدرس:</p>
+                    <div class="comentAndView">
+                        <div class="view">
+                            <i class="bi bi-eye"></i>
+                            <p>2</p>
+                        </div>
+                        <div class="comment">
+                            <i class="bi bi-chat"></i>
+                            <p>2</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            
+        </div>
+        <!-- Add more company cards as needed -->
+    </div>
+    <div class="company-list">
+        <header>
+            <h3>
+                پربازدیدترین شرکت ها
+            </h3>
+        </header>
+        <div class="companies">
+            <a class="company-card">
+                <div class="company-image">
+                    <img src="company1.jpg" alt="Company 1" >
+                </div>
+                <div class="company-info">
+                    <h2 class="company-name">شرکت 1</h2>
+                    <p class="company-registered">تاریخ ثبت: 2020-01-01</p>
+                    <p class="company-address">آدرس:</p>
+                    <div class="comentAndView">
+                        <div class="view">
+                            <i class="bi bi-eye"></i>
+                            <p>2</p>
+                        </div>
+                        <div class="comment">
+                            <i class="bi bi-chat"></i>
+                            <p>2</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a class="company-card">
+                <div class="company-image">
+                    <img src="company1.jpg" alt="Company 1" >
+                </div>
+                <div class="company-info">
+                    <h2 class="company-name">شرکت 1</h2>
+                    <p class="company-registered">تاریخ ثبت: 2020-01-01</p>
+                    <p class="company-address">آدرس:</p>
+                    <div class="comentAndView">
+                        <div class="view">
+                            <i class="bi bi-eye"></i>
+                            <p>2</p>
+                        </div>
+                        <div class="comment">
+                            <i class="bi bi-chat"></i>
+                            <p>2</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- Add more company cards as needed -->
+    </div>
+    
+</div>
+<div class="popUpContainer">
+    <div class="container">
+        <div class="formContainer">
+            <header>
+                    <button class="closeButton" onClick="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg closeIcon" viewBox="0 0 16 16">
+                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                        </svg>
+                    </button>
+                    <div class="personIcon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                        </svg>
+                    </div>
+                    <div class='switch-container'>
+                        <input type="checkbox" id="switch" class='switch-input' checked="" onChange="handleToggle()"/>
+                        <label for="switch" class='switch-label'>
+                            <div class='switch-label-content'>
+                                <p>ورود</p>
+                                <p>ثبت نام</p>
+                            </div>
+                        </label>
+                    </div>
+                </header>
+                
+                <div>
+                    
+                    <div class="loginContainer">
+                        <div class="chooseUserTypeSection UserLoginTypeSection">
+                            <h2>ورود</h2>
+                            <p>آیا می خواهید به حساب شرکت ورود کنید یا کاربر؟</p>
+                            <div class="chooseUserTypeButtons">
+                                <a href="{% url 'authentication:login_customer' %}">کاربر</a>
+                                <a href="{% url 'authentication:login_company' %}">شرکت</a>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+
+                    <div class="SignUpContainer">
+                        <div class="chooseUserTypeSection UserSignUpTypeSection">
+                            <h2>ثبت نام</h2>
+                            <p>آیا می خواهید یک شرکت را ثبت کنید یا به عنوان یک کاربر عادی ثبت نام کنید؟</p>
+                            <div class="chooseUserTypeButtons">
+                                <a href="{% url 'authentication:signup_customer' %}">کاربر</a>
+                                <a href="{% url 'authentication:signup_company' %}">شرکت</a>
+                            </div>
+                        </div>
+                        
+                        
+
+                            
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script src="{% static 'js/scripts.js' %}"></script>
+</html>
