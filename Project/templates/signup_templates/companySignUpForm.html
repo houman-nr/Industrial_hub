@@ -44,7 +44,8 @@
                 
                     <div class="formRow">
                         <label for="companyAddress">آدرس شرکت</label>
-                        <input type="text" id="companyAddress" name="company_address" placeholder='آدرس شرکت.........' value="{{ company_form.company_address.value|default_if_none:'' }}" required/>
+                        <textarea id="companyAddress" name="address" rows="4" cols="50" placeholder="آدرس شرکت........." value="{{ company_form.company_address.value|default_if_none:'' }}" required></textarea>
+                        {% comment %} <input type="textarea" id="companyAddress" name="company_address" placeholder='آدرس شرکت.........' value="{{ company_form.company_address.value|default_if_none:'' }}" required/> {% endcomment %}
                     </div>
                 
                     <div class="formRow">

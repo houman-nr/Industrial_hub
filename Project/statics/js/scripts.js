@@ -9,22 +9,43 @@ document.getElementsByClassName('HomeReturnButton')[0].onclick = function() {
 document.addEventListener('DOMContentLoaded', (event) => {
     const checkbox=document.getElementById("switch");
     const openbutton = document.getElementsByClassName("LoginSignUpButton")[0];
+    const loginContainer=document.getElementsByClassName("loginContainer")[0];
+    const loginButton = document.getElementsByClassName("loginButton")[0];
+    const signUpButton = document.getElementsByClassName("signUpButton")[0];
     const closeButton = document.getElementsByClassName("closeButton")[0];
     const LoginSignUpForm = document.getElementsByClassName("popUpContainer")[0];
     const UserLoginTypeSection=document.getElementsByClassName("UserLoginTypeSection")[0];
     const UserSignUpTypeSection=document.getElementsByClassName("UserSignUpTypeSection")[0];
-    
+    const SignUpContainer=document.getElementsByClassName("SignUpContainer")[0];
+
     
 
-    UserLoginTypeSection.style.display="none"
-    UserSignUpTypeSection.style.display="block"
     
     
-    openbutton.addEventListener('click', () => {
+    // openbutton.addEventListener('click', () => {
+        //     LoginSignUpForm.style.display="block";
+        //     checkbox.checked=true;
+        
+        // });
+    loginButton.addEventListener('click', () => {
+        loginContainer.style.display="block";
+        SignUpContainer.style.display="none"
+        UserLoginTypeSection.style.display="block"
+        UserSignUpTypeSection.style.display="none"
+        LoginSignUpForm.style.display="block";
+        checkbox.checked=false;
+
+    });
+    signUpButton.addEventListener('click', () => {
+        loginContainer.style.display="none";
+        SignUpContainer.style.display="block"
+        UserSignUpTypeSection.style.display="block"
+        UserLoginTypeSection.style.display="none"
         LoginSignUpForm.style.display="block";
         checkbox.checked=true;
 
-});
+
+    });
 closeButton.addEventListener('click', () => {
     LoginSignUpForm.style.display="none";
 });
@@ -50,7 +71,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 function handleToggle(){
     const checkbox=document.getElementById("switch");
-    const loginForm=document.getElementsByClassName("loginContainer")[0];
+    const loginContainer=document.getElementsByClassName("loginContainer")[0];
     const SignUpContainer=document.getElementsByClassName("SignUpContainer")[0];
     const UserLoginTypeSection=document.getElementsByClassName("UserLoginTypeSection")[0];
     const UserSignUpTypeSection=document.getElementsByClassName("UserSignUpTypeSection")[0];
@@ -59,11 +80,11 @@ function handleToggle(){
     UserSignUpTypeSection.style.display="none"
 
     if(checkbox.checked){
-        loginForm.style.display="none";
+        loginContainer.style.display="none";
         SignUpContainer.style.display="block"
         UserSignUpTypeSection.style.display="block"
     }else{
-        loginForm.style.display="block";
+        loginContainer.style.display="block";
         SignUpContainer.style.display="none"
         UserLoginTypeSection.style.display="block"
     }
@@ -228,3 +249,61 @@ uploadForm.addEventListener('submit', (event) => {
         console.error('Error:', error);
     });
 });
+
+
+// --------------------
+// tour showing
+
+(function() {
+    let slideIndex = 0;
+    let slides = document.getElementsByClassName("mySlides");
+    showSlides();
+  
+    function showSlides() {
+      let i;
+      let dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      // slideIndex++;
+      // if (slideIndex > slides.length) {slideIndex = 1}
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex].style.display = "block";
+      slides[slideIndex].className += " show";
+      dots[slideIndex].className += " active";
+      // setTimeout(showSlides, 4000); // Change image every 4 seconds
+    }
+  
+    function plusSlides() {
+      slideIndex += 1;
+      console.log(slideIndex);
+      if (slideIndex == slides.length) {
+        slideIndex -= 1;
+        return;
+      } else {
+        showSlides();
+      }
+    }
+  
+    function minusSlides() {
+      slideIndex -= 1;
+      if (slideIndex == -1) {
+        slideIndex = 0;
+        return;
+      }
+      showSlides();
+    }
+  
+    function currentSlide(n) {
+      slideIndex = n - 1;
+      showSlides();
+    }
+  
+    // Expose functions to the global scope if needed
+    window.plusSlides = plusSlides;
+    window.minusSlides = minusSlides;
+    window.currentSlide = currentSlide;
+  })();
+  

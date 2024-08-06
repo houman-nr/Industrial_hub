@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <title>ویرایش پروفایل کمپانی</title>
+</head>
+<body>
+    <ul class="formCircles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="profilePopUpMenu">
+        <header>
+            <span class="profilePicture">
+                <i class="bi bi-person-circle"></i>
+                <span class="profileName">نام شرکت</span>
+            </span>
+            <button class="profilePopUpMenuCloseButton">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </header>
+        <div class="profileOptions">
+            <ul>
+                <li><a href="tourCreating.html">ساخت تور</a></li>
+                <li><a href="tourEditing.html">ویرایش تور</a></li>
+                <li><a href="">نظرات</a></li>
+            </ul>
+            <ul>
+                <li><a href="">پروفایل</a></li>
+                <li><a href="">پروفایل</a></li>
+                <li><a href="">پروفایل</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="navBarSideBar">
+        <div class="profileOptions">
+            <ul>
+                <li><a href="">تماس با ما</a></li>
+                <li><a href="">پنل فروشندگان و خریداران</a></li>
+                <li><a href="">لیست شرکت ها</a></li>
+            </ul>
+        </div>
+    </div>
+    <label for="navBarSidBarCheckBox" id="navbarCollapse">
+        <input type="checkbox" id="navBarSidBarCheckBox">
+        <button class="navbarCollapseButton">
+            <i class="bi bi-list"></i>
+        </button>
+    </label>
+    <div class='Header'>
+        <div class='top'>            
+            <img class="headerLogoImage" src="{% static 'images/Logo.png' %}" alt="لوگو" />
+            <input type="checkbox" id="openForm">
+            <button class="profileButton">
+                <i class="bi bi-person-circle"></i>
+            </button>
+        </div>
+        
+        <ul class='HeaderNavBarContainer'>
+            <li><a href="">تماس با ما</a></li>
+            <li><a href="">پنل فروشندگان و خریداران</a></li>
+            <li><a href="">لیست شرکت ها</a></li>
+        </ul>
+        <div class='searchBarContainer'>
+            <a href="" class='searchBarIcon'>
+                <i class="bi bi-search"></i>
+            </a>
+            <input type="text"  placeholder='جست و جو......' class='searchBarInput'/>
+        </div>
+    </div>
+    <div class="homePageBody">
+        
+        <svg class="curvedSyle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#0099ff" fill-opacity="1" d="M0,160L48,165.3C96,171,192,181,288,165.3C384,149,480,107,576,112C672,117,768,171,864,160C960,149,1056,75,1152,58.7C1248,43,1344,85,1392,106.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+        <div class="container">
+            <div class="formContainer">
+            <div class="ProfileEdit">
+                <header>
+                    <h2>ویرایش اطلاعات پروفایل</h2>
+                </header>
+                <form action="#">
+                    <div class="formRow">
+                        <label htmlFor="">ایمیل</label>
+                        <input type="text" placeholder='آدرس ایمیل.......' required/>
+                    </div>
+                    <div class="formRow">
+                        <label htmlFor="">نام کاربری</label>
+                        <input type="text" placeholder='نام کاربری.........' required/>
+                    </div>
+                    <div class="formRow">
+                        <label htmlFor="">نام شرکت</label>
+                        <input type="text" placeholder='نام شرکت.........' required/>
+                    </div>
+                    <div class="formRow">
+                        <label htmlFor="">آدرس شرکت</label>
+                        <input type="text" placeholder='آدرس شرکت.........' required/>
+                    </div>
+                    <div class="formRow">
+                        <label htmlFor="">شماره تلفن شرکت</label>
+                        <input type="text" placeholder='شماره تلفن شرکت.........' required/>
+                    </div>
+                    <div class="formRow">
+                        <label htmlFor="">رمز عبور</label>
+                        <input type="password" placeholder='رمز عبور.......' required/>
+                    </div>
+                    <div class="formRow">
+                        <label htmlFor="">تکرار رمز عبور</label>
+                        <input type="password" placeholder='تکرار رمز عبور.....' required/>
+                    </div>
+                    <div class="signUpButton formRow">
+                        <input type="submit" value="ثبت تغییرات"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+<script src="{% static 'js/scripts.js' %}"></script>
+</html>
