@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
-from django.contrib.auth.forms import AuthenticationForm
 from django.core.exceptions import ValidationError
 from .forms import CustomUserCreationForm, CompanyUserCreationForm, CustomerUserCreationForm
 from .models import CustomUser, CompanyUser, CustomerUser
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from .forms import TourForm
+from .models import TourImage, TourVideo
+
 
 def signup_company_view(request):
     if request.method == 'POST':
@@ -19,11 +22,11 @@ def signup_company_view(request):
                 company_user = company_form.save(commit=False)
                 company_user.user = user
                 company_user.save()
-                return redirect('website:home')
+                return redirect('authentication:login_company')
             except ValidationError as e:
                 user_form.add_error(None, e.message)
+                print(e.message)
         else:
-            # Print form errors to debug
             print(user_form.errors)
             print(company_form.errors)
     else:
@@ -47,7 +50,7 @@ def signup_customer_view(request):
                 customer_user = customer_form.save(commit=False)
                 customer_user.user = user
                 customer_user.save()
-                return redirect('website:home')
+                return redirect('authentication:login_customer')
             except ValidationError as e:
                 user_form.add_error(None, e.message)
         else:
@@ -68,10 +71,10 @@ def login_company_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None and user.is_company:
             login(request, user)
-            return redirect('website:home')
+            return render(request, 'website_templates/companyProfile.html')
         else:
             messages.error(request, 'Invalid credentials or not a company user')
-    return render(request, 'login_templates/companyLoginForm.html')
+    return render(request, 'login_templates/companyLoginForm.html', {'user' : user})
 
 def login_customer_view(request):
     if request.method == 'POST':
@@ -80,11 +83,15 @@ def login_customer_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None and user.is_customer:
             login(request, user)
-            return redirect('website:home') 
+            return render(request, 'website_templates/customerProfile.html', {'user' : user})
         else:
             messages.error(request, 'Invalid credentials or not a customer user')
     return render(request, 'login_templates/customerLoginForm.html')
 
 def logout_view(request):
     logout(request)
-    return redirect('website:home')
+    return render('website_templates/home.html')
+
+
+
+

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{%load static%}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,7 +23,7 @@
         <header>
             <span class="profilePicture">
                 <i class="bi bi-person-circle"></i>
-                <span class="profileName">نام کاربری</span>
+                <span class="profileName">{{user.username}}</span>
             </span>
             <button class="profilePopUpMenuCloseButton">
                 <i class="bi bi-x-lg"></i>
@@ -31,7 +32,7 @@
         <div class="profileOptions">
             <ul>
                 <li><a href="">پروفایل</a></li>
-                <li><a href="">پروفایل</a></li>
+                <li><a href="{% url 'authentication:logout' %}">خروج</a></li>
                 <li><a href="">پروفایل</a></li>
             </ul>
             <ul>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{%load static%}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +24,7 @@
         <header>
             <span class="profilePicture">
                 <i class="bi bi-person-circle"></i>
-                <span class="profileName">نام شرکت</span>
+                <span class="profileName">{{user.username}}</span>
             </span>
             <button class="profilePopUpMenuCloseButton">
                 <i class="bi bi-x-lg"></i>

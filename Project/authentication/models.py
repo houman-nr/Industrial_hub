@@ -1,8 +1,8 @@
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
 from django.core.exceptions import ValidationError
-from django import forms
-from django.contrib.auth.forms import AuthenticationForm
+from django.conf import settings
+from django.utils.translation import gettext_lazy as _
 
 class CustomUser(AbstractUser):
     is_customer = models.BooleanField(default=False)
@@ -44,8 +44,6 @@ class CustomerUser(models.Model):
 
     def __str__(self):
         return self.user.username
-    
-    
-class CustomLoginForm(AuthenticationForm):
-    username = forms.CharField(label='نام کاربری')
-    password = forms.CharField(label='رمز عبور', widget=forms.PasswordInput)
+
+
+
