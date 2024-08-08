@@ -4,9 +4,7 @@ from django.core.exceptions import ValidationError
 from .forms import CustomUserCreationForm, CompanyUserCreationForm, CustomerUserCreationForm
 from .models import CustomUser, CompanyUser, CustomerUser
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from .forms import TourForm
-from .models import TourImage, TourVideo
+
 
 
 def signup_company_view(request):
