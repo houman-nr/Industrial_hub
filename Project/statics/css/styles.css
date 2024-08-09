@@ -1,7 +1,7 @@
 
 *{
   --color1:#0084ff;
-  --color2:rgb(43, 77, 247);
+  --color2:#2b4df7;
   --color3: #00c8ff;
   --color4: #2c59eb;
   --color5: #7fffd4;
@@ -159,6 +159,7 @@ body {
   display: none;
   z-index: 10000;
   font-size: 24px;
+  cursor: pointer;
 }
 
 
@@ -273,9 +274,9 @@ display: inline-block;
 margin-bottom: 30px;
 font-weight: 500;
 }
-.formContainer textarea{
+/* .formContainer textarea{
   width: ;
-}
+} */
 .companySignUp .formRow input[type="submit"]{
 height: 35px;
 }
@@ -747,13 +748,13 @@ top: 0;
 right: 0;
 border: none;
 border-radius: 50%;
+cursor: pointer;
+font-size: 40px;
 }
-.profileButton svg{
-width: 100%;
-height: 100%;
+.profileButton i{
 transition: color 0.3s;
 }
-.profileButton:hover svg{
+.profileButton:hover i{
 color: #39efff;
 }
 
@@ -814,7 +815,43 @@ direction: rtl;
   justify-content: center;
   margin: 20px;
   width: 60%;
-  
+  /* background-color: #0084ff8f;
+  backdrop-filter: blur(5px);
+  border: 2px solid var(--color1);
+  border-radius: 10px 0 10px 10px; */
+}
+.company-list .seeMoreBtn{
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+.company-list .seeMoreBtn button{
+  background-color: #00ffea;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+.company-list .seeMoreBtn i{
+  position: absolute;
+  z-index: -1;
+  background-color: #00ffea;
+  color: #0084ff;
+  font-size: 20px;
+  border-radius: 0 0 20px 20px;
+  width: 30px;
+  text-align: center;
+}
+.company-list .seeMoreBtn button:hover{
+  background-color: #0084ff;
+  color: #00ffea;
+  border: 2px solid #00ffea;
+}
+.company-list .seeMoreBtn button:hover ~ i{
+  transform: translateY(25px);
 }
 
 .company-list header{
@@ -828,33 +865,16 @@ direction: rtl;
   width: fit-content;
   position: relative;
 }
-/* .company-list header::before{
-  content: "";
-  position: absolute;
-  width: 62px;
-  height: 60px;
-  border-radius: 20px 0;
-  left: -61px;
-  bottom: 0;
-  background-color: #2d82a4;
-  z-index: 100;
-}
-.company-list header::after{
-  content: "";
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  border-radius: 20px 0 0 0;
-  left: -60px;
-  bottom: 0;
-  background-color: var(--color1);
-} */
+
 .companies{
   background-color: #0084ff8f;
   backdrop-filter: blur(5px);
   border: 2px solid var(--color1);
   border-radius: 10px 0 10px 10px;
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
 }
 .company-card {
 background: linear-gradient(-90deg, #00ffea, #2600ff);
@@ -944,6 +964,9 @@ font-weight: 900;
 }
 
 @media (max-width: 400px) {
+  .company-list .seeMoreBtn button{
+    font-size: 15px;
+  }
 .company-list{
   width: 100%;
 }
@@ -955,6 +978,7 @@ font-weight: 900;
 }
 .company-card {
   max-width: 100%;
+  /* flex-direction: column; */
 }
 .companies{
   border-radius: 0 0 20px 20px;
@@ -1647,4 +1671,105 @@ color: #00ffff;
   max-width: 200px;
 }
 }
+
+/* ------------------------ */
+/* Orders list */
+
+.Orders-List {
+  direction: rtl;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+    width: 60%;
+    /* background-color: #0084ff8f;
+    backdrop-filter: blur(5px);
+    border: 2px solid var(--color1);
+    border-radius: 10px 0 10px 10px; */
+  }
+  
+  .Orders-List header{
+    background-color: #00000091;
+    backdrop-filter: blur(5px);
+    /* background-color: var(--color1); */
+    color: white;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 20px 20px 0 0;
+    width: fit-content;
+    height: 50px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .Orders{
+    background-color: #ffffff8f;
+    backdrop-filter: blur(5px);
+    border: 2px solid #00000091;
+    border-radius: 10px 0 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+  .Order-card {
+    /* background: rgb(255,255,255); */
+    /* background: linear-gradient(90deg, rgba(255,255,255,0.6) 0%, rgba(85,85,85,0.6) 62%, rgba(0,0,0,0.8) 99%); */
+    background-color: #000000;
+    opacity: 0.6;
+    border-radius: 6px;
+    /* box-shadow: 0 4px 8px rgba(0,0,0); */
+    margin: 10px;
+    max-width: 100%;
+    height: 230px;
+    overflow: hidden;
+    transition: transform 0.2s;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0 20px;
+    transition: 0.3s;
+    font-weight: 900;
+  }
+  .Order-card:hover{
+    transform: scale(1.05);
+    opacity: 1;
+  }
+
+  .order-info{
+    color: white;
+    
+  }
+
+  .Order-card .company-image {
+    width: 60%;
+    height: 90%;
+    /* width: 50%;
+    height: 100%; */
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    background-color: white;
+    /* z-index: -1; */
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 10px;
+    overflow: hidden;
+    }
+    .company-card .company-image img{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    }
+
+
 

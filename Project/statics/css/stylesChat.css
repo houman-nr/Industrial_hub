@@ -1,0 +1,207 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+.container {
+  margin: 0 auto;
+  width: 750px;
+  /* background: #444753; */
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+
+.chat {
+  
+  border-radius: 10px;
+  /* min-width:( 90%,490px); */
+  width: 490px;
+  float: left;
+  background: #f2f5f894;
+  background: rgb(43,77,247);
+background: linear-gradient(0deg, rgba(43,77,247,0.8) 0%, rgba(0,132,255,0.8) 23%, rgba(127,236,255,0.8) 43%, rgba(104,230,255,0.8) 53%, rgba(96,0,255,0.8) 100%);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #00ffe1;
+}
+.chat .chat-header {
+  direction: rtl;
+  padding: 20px;
+  /* border-bottom: 2px solid rgb(17, 0, 255); */
+  box-shadow: 0px 5px 5px black;
+  /* background-color: #0084ff; */
+}
+.chat .chat-header img {
+  float: right;
+  width: 20%;
+  border-radius: 50%;
+  border: 2px solid #0051ff;
+}
+.chat .chat-header .chat-about {
+  float: right;
+  padding-right: 10px;
+  margin-top: 6px;
+}
+.chat .chat-header .chat-with {
+  font-weight: bold;
+  font-size: 20px;
+}
+.chat .chat-header .chat-num-messages {
+  color: #00d0ff;
+}
+.chat .chat-header .fa-star {
+  float: right;
+  color: #D8DADF;
+  font-size: 20px;
+  margin-top: 12px;
+}
+.chat .chat-history {
+  padding: 30px 30px 20px;
+  border-bottom: 2px solid white;
+  overflow-y: scroll;
+  height: 575px;
+}
+.chat .chat-history .message-data {
+  margin-bottom: 15px;
+}
+.chat .chat-history .message-data-time {
+  color: #ffffff;
+  padding-left: 6px;
+}
+.chat .chat-history .message {
+  color: white;
+  padding: 18px 20px;
+  line-height: 26px;
+  font-size: 16px;
+  border-radius: 7px;
+  margin-bottom: 30px;
+  width: 90%;
+  position: relative;
+  direction: rtl;
+  text-align: right;
+}
+.chat .chat-history .message:after {
+  bottom: 100%;
+  left: 7%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: #3d3d3d;
+  border-width: 10px;
+  margin-left: -10px;
+}
+.chat .chat-history .my-message {
+  background: #7191bb;
+}
+.chat .chat-history .other-message {
+  background: #008cff;
+}
+.chat .chat-history .other-message:after {
+  border-bottom-color: #0051ff;
+  left: 93%;
+}
+.chat .chat-message {
+  padding: 30px;
+}
+.chat .chat-message textarea {
+  direction: rtl;
+  width: 100%;
+  border: none;
+  padding: 10px 20px;
+  font: 14px/22px "Lato", Arial, sans-serif;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  resize: none;
+  box-shadow: 0px 0px 5px 5px rgb(0, 229, 255);
+  background-color: #ffffff;
+}
+.chat .chat-message textarea:focus {
+  outline: none;
+  box-shadow: inset 0px 0px 5px 5px rgb(0, 229, 255);
+
+}
+.chat .chat-message .fa-file-o, .chat .chat-message .fa-file-image-o {
+  font-size: 16px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+.chat .chat-message button {
+  float: right;
+  color: #4000ff;
+  font-size: 20px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: #F2F5F8;
+  background-color: #00ffdd;
+  border-radius: 5px;
+}
+.chat .chat-message button:hover {
+  color: #75b1e8;
+}
+
+.online, .offline, .me {
+  margin-right: 3px;
+  font-size: 10px;
+}
+
+.online {
+  color: #005eff;
+}
+
+.offline {
+  color: #E38968;
+}
+
+.me {
+  color: #00ffea;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.float-right {
+  float: right;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+/* width */
+.chat-history::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.chat-history::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Handle */
+.chat-history::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.chat-history::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

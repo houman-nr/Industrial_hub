@@ -132,13 +132,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     
 
 
-    
-    openProfileMenubutton.addEventListener('click', () => {
-        profilePopUpMenu.style.transform="translateX(0)";
-    });
-    closeProfileMenubutton.addEventListener('click', () => {
-        profilePopUpMenu.style.transform="translateX(100%)";
-    });
+    if (openProfileMenubutton || closeProfileMenubutton){
+        openProfileMenubutton.addEventListener('click', () => {
+            profilePopUpMenu.style.transform="translateX(0)";
+        });
+        closeProfileMenubutton.addEventListener('click', () => {
+            profilePopUpMenu.style.transform="translateX(100%)";
+        });
+    }
 });
 
 // ------------------------
@@ -173,6 +174,7 @@ const uploadForm = document.getElementById('uploadForm');
 let imageArray = [];
 let videoArray = [];
 
+if (imageInput || videoInput || imageList || videoList || uploadForm ) {
 imageInput.addEventListener('change', handleImageSelect);
 videoInput.addEventListener('change', handleVideoSelect);
 imageList.addEventListener('click', handleFileRemove);
@@ -249,7 +251,7 @@ uploadForm.addEventListener('submit', (event) => {
         console.error('Error:', error);
     });
 });
-
+}
 
 // --------------------
 // tour showing
@@ -257,8 +259,9 @@ uploadForm.addEventListener('submit', (event) => {
 (function() {
     let slideIndex = 0;
     let slides = document.getElementsByClassName("mySlides");
-    showSlides();
-  
+    if(slides && slides.length!=0){
+        showSlides();
+    }
     function showSlides() {
       let i;
       let dots = document.getElementsByClassName("dot");
@@ -307,3 +310,32 @@ uploadForm.addEventListener('submit', (event) => {
     window.currentSlide = currentSlide;
   })();
   
+
+// ---------------------
+// orders list
+let orderStatus = document.getElementsByClassName("orderStatus")[0];
+
+if (orderStatus) {
+    let value=orderStatus.innerHTML;
+    console.log(typeof value)
+    switch (value) {
+        case 'در حال انجام':
+            orderStatus.style.color="yellow"
+            console.log("yellow")
+            // Additional code for 'in process' status
+            break;
+            
+        case 'انجام شده':
+        orderStatus.style.color="greenyellow"
+        break;
+            
+        case 'لغو شده':
+        orderStatus.style.color="red"
+        break;
+    
+        default:
+            console.log("else")
+            break;
+    }
+    // Additional code that depends on the existence of orderStatus
+}
