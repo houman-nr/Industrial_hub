@@ -98,3 +98,83 @@
   searchFilter.init();
   
 })();
+
+// -----------------------
+// image upload code
+
+// document.getElementById('ChatImageUpload').addEventListener('click', function() {
+//   document.getElementById('imageInput').click();
+// });
+
+document.getElementById('ChatImageUpload').addEventListener('change', function(event) {
+  const file = event.target.files[0];
+  if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+          document.getElementById('imagePreview').src = e.target.result;
+          document.getElementById('imageModal').style.display = "flex";
+      };
+      reader.readAsDataURL(file);
+  }
+});
+let closeButton=document.querySelector('.close');
+if (closeButton){
+closeButton.addEventListener('click', function() {
+  closeModal();
+});
+}
+document.getElementById('cancelButton').addEventListener('click', function() {
+  closeModal();
+  document.getElementById('imageInput').value = null;
+  document.getElementById('imagePreview').src = "";
+});
+
+document.getElementById('submitButton').addEventListener('click', function() {
+  const fileInput = document.getElementById('imageInput');
+  const formInput = document.getElementById('imageFile');
+  formInput.files = fileInput.files;
+  document.getElementById('imageForm').submit();
+});
+
+function closeModal() {
+  document.getElementById('imageModal').style.display = "none";
+}
+
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  const peopleListCollapseButton = document.getElementsByClassName("people-List-CollapseButton")[0];
+  const checkbox = document.getElementById('people-List-SidBarCheckBox');
+  const peopleList = document.getElementsByClassName('people-list')[0];
+  
+
+  peopleListCollapseButton.addEventListener('click', () => {
+      checkbox.checked = !checkbox.checked;
+      if(checkbox.checked){
+        peopleList.style.transform="translateX(0)";
+      }else{
+        peopleList.style.transform="translateX(-100%)";
+          
+      }
+
+  });
+  // Function to check the width and apply/remove the class
+  function checkWidth() {
+    if (window.innerWidth < 700) {
+      peopleList.style.width="260px";
+      // peopleList.classList.add('peopleListSideBar'); // Add the class if width < 400px
+      // console.log("added")
+    } else {
+      peopleList.style.width="40%";
+      peopleList.style.transform="translateX(0)";
+      // peopleList.classList.remove('peopleListSideBar'); // Remove the class if width >= 400px
+      // console.log("removed")
+    }
+  }
+  
+  // Check the width initially in case the page loads at a smaller size
+  checkWidth();
+  
+  // Add the event listener to check on window resize
+  window.addEventListener('resize', checkWidth);
+});

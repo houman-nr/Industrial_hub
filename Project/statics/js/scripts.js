@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-document.getElementsByClassName('HomeReturnButton')[0].onclick = function() {
-    window.history.back();
-};
+    let HomeReturnButton=document.getElementsByClassName('HomeReturnButton')[0];
+    if(HomeReturnButton){
+        HomeReturnButton.onclick = function() {
+            window.history.back();
+        };
+    }
 });
 
 // ----------------------------
@@ -27,6 +30,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         //     checkbox.checked=true;
         
         // });
+    if(loginButton || signUpButton || closeButton){
     loginButton.addEventListener('click', () => {
         loginContainer.style.display="block";
         SignUpContainer.style.display="none"
@@ -46,9 +50,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 
     });
-closeButton.addEventListener('click', () => {
-    LoginSignUpForm.style.display="none";
-});
+    closeButton.addEventListener('click', () => {
+        LoginSignUpForm.style.display="none";
+    });
+}
 });
 
 document.addEventListener('DOMContentLoaded', (event) => {
