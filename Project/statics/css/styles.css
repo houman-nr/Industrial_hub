@@ -834,7 +834,9 @@ direction: rtl;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
+  transition: 0.3s;
 }
+
 .company-list .seeMoreBtn i{
   position: absolute;
   z-index: -1;
@@ -844,6 +846,7 @@ direction: rtl;
   border-radius: 0 0 20px 20px;
   width: 30px;
   text-align: center;
+  transition: 0.3s;
 }
 .company-list .seeMoreBtn button:hover{
   background-color: #0084ff;

@@ -22,7 +22,7 @@
   float: left;
   background: #f2f5f894;
   background: rgb(43,77,247);
-background: linear-gradient(0deg, rgba(43,77,247,0.8) 0%, rgba(0,132,255,0.8) 23%, rgba(127,236,255,0.8) 43%, rgba(104,230,255,0.8) 53%, rgba(96,0,255,0.8) 100%);
+background: linear-gradient(0deg, rgba(43,77,247,0.8) 0%, rgba(0,132,255,0.8) 23%, rgba(127, 182, 255, 0.8) 43%, rgba(104, 169, 255, 0.8) 53%, rgba(96,0,255,0.8) 100%);
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   color: #00ffe1;
@@ -131,22 +131,50 @@ background: linear-gradient(0deg, rgba(43,77,247,0.8) 0%, rgba(0,132,255,0.8) 23
   color: rgb(255, 255, 255);
   cursor: pointer;
 }
-.chat .chat-message button {
+.chat .chat-message .fa-file-o, .chat .chat-message .fa-file-image-o:hover{
+  color: rgb(0, 255, 238);
+  
+}
+.chat .chat-message .sendButton {
   float: right;
   color: #4000ff;
-  font-size: 20px;
+  font-size: 25px;
   text-transform: uppercase;
+  font-weight: bold;
+  position: relative;
+  transition: 0.3s;
+  z-index: 10;
+}
+.chat .chat-message .sendButton input{
   border: none;
   cursor: pointer;
-  font-weight: bold;
-  background: #F2F5F8;
   background-color: #00ffdd;
   border-radius: 5px;
+  padding: 5px 10px;
 }
-.chat .chat-message button:hover {
-  color: #75b1e8;
+.chat .chat-message .sendButton .sendIcon{
+  font-size: 20px;
+  position: absolute;
+  right: 0;
+  /* top: 0; */
+  z-index: -1;
+  transition: 0.3s;
+  border-radius: 0 5px 5px 0;
+  padding: 7px;
 }
-
+.chat .chat-message .sendButton input:hover {
+  color: #00ffd9;
+  background-color: #0077ff;
+  border-radius: 5px 0 0 5px;
+}
+.chat .chat-message .sendButton input:hover ~ .sendIcon{
+  color: #0077ff;
+  background-color: #00ffd9;
+  transform: translateX(100%);
+}
+#ChatImageUpload{
+  display: none;
+}
 .online, .offline, .me {
   margin-right: 3px;
   font-size: 10px;
