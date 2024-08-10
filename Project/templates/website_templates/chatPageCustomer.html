@@ -18,7 +18,7 @@
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
     
 
-    <title>پروفایل کاربر</title>
+    <title>صفجه چت کاربر</title>
 </head>
 <body>
     <ul class="formCircles">
@@ -40,9 +40,9 @@
         </header>
         <div class="profileOptions">
             <ul>
-                <li><a href="">پروفایل</a></li>
+                <li><a href="">ویرایش پروفایل</a></li>
                 <li><a href="{% url 'authentication:logout' %}">خروج</a></li>
-                <li><a href="">پروفایل</a></li>
+                <li><a href="">پیام رسان</a></li>
             </ul>
             <ul>
                 <li><a href="">پروفایل</a></li>
@@ -93,12 +93,12 @@
           <label for="people-List-SidBarCheckBox" id="people-List-Collapse">
             <input type="checkbox" id="people-List-SidBarCheckBox">
             <button class="people-List-CollapseButton">
-                <i class="bi bi-list"></i>
+              <i class="bi bi-people-fill"></i>
             </button>
           </label>
           <div class="people-list" id="people-list">
             <div class="search">
-              <input type="text" placeholder="search" />
+              <input type="text" placeholder="جست و جو" />
               <i class="fa fa-search"></i>
             </div>
             <ul class="list">

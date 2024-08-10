@@ -40,22 +40,29 @@
   background-color: #0051ff;
   padding: 20px;
   box-shadow: 0px 2px 5px black;
+  direction: rtl;
 }
+
 .people-list input {
-  border-radius: 3px;
+  direction: rtl;
+  border-radius: 5px;
   border: none;
   padding: 14px;
   color: white;
   background: #00aaff;
-  width: 90%;
+  width: 80%;
   font-size: 14px;
+}
+.people-list input::placeholder{
+  color: #003cff;
 }
 .people-list input:focus {
   outline: none;
 }
 .people-list .fa-search {
   position: relative;
-  left: -25px;
+  /* left: -25px; */
+  right: -20px;
 }
 .people-list ul {
   padding: 20px;
@@ -400,16 +407,22 @@ background: linear-gradient(0deg, rgba(43,77,247,0.8) 0%, rgba(0,132,255,0.8) 23
 }
 #people-List-Collapse{
   position: absolute;
+  top: 15px;
 }
 .people-List-CollapseButton{
   display: none;
   z-index: 10000;
   font-size: 24px;
   cursor: pointer;
+  background-color: #00f2ff;
 }
+
 #people-List-SidBarCheckBox{
   display: none;
   
+}
+.people-List-CollapseButton i{
+  color: #005eff;
 }
 @media screen and (max-width: 700px) {
   .chat{
@@ -432,6 +445,7 @@ background: linear-gradient(0deg, rgba(43,77,247,0.8) 0%, rgba(0,132,255,0.8) 23
   .people-list{
     border-radius: 10px;
     /* display: none; */
+
     position: absolute;
     background: rgba(68, 0, 255, 1);
     left: 0;
@@ -447,4 +461,5 @@ background: linear-gradient(0deg, rgba(43,77,247,0.8) 0%, rgba(0,132,255,0.8) 23
   .chat .chat-header .chat-num-messages {
     font-size: 10px;
   }
+
 }
