@@ -18,11 +18,16 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from chatapp.views import contact_list, chat_list, chat_membership_list, message_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('website.urls')),
-    path('authentication/', include('authentication.urls'))
+    path('authentication/', include('authentication.urls')),
+    path('api/contacts/', contact_list, name='contact-list'),
+    path('api/chats/', chat_list, name='chat-list'),
+    path('api/chatmemberships/', chat_membership_list, name='chat-membership-list'),
+    path('api/messages/', message_list, name='message-list'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
