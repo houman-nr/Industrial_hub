@@ -72,6 +72,11 @@
   padding-bottom: 20px;
   border-bottom: 2px solid #00bbff;
   margin-top: 10px;
+  cursor: pointer;
+  border-radius: 10px 10px 0 0;
+}
+.people-list ul li:hover{
+  background-color: #0051ff;
 }
 .people-list img {
   float: left;
@@ -287,7 +292,7 @@ background: linear-gradient(0deg, rgba(43,77,247,0.8) 0%, rgba(0,132,255,0.8) 23
 }
 
 .online {
-  color: #005eff;
+  color: #00eaff;
 }
 
 .offline {
@@ -309,7 +314,6 @@ background: linear-gradient(0deg, rgba(43,77,247,0.8) 0%, rgba(0,132,255,0.8) 23
 .float-right {
   float: right;
 }
-
 .clearfix:after {
   visibility: hidden;
   display: block;

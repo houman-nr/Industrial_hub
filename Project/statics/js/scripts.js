@@ -369,7 +369,7 @@ let currentSlide = 0;
 
 const slideshow = document.querySelector('.slideshow');
 const slideshowContainer = document.querySelector('.slideshow-container');
-
+if(slideshow || slideshowContainer){
 // Inject slides into the slideshow
 function createSlides() {
     images.forEach((src, index) => {
@@ -434,7 +434,7 @@ if(numberOfSlides!=0){
 }else{
     slideshowContainer.style.display="none";
 }
-
+}
 
 // ---------------------
 // orders list
