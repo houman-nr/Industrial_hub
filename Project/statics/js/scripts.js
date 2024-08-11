@@ -169,152 +169,272 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 // -------------------------
 // tourCreating
-
+// Select elements for both image inputs
+const profileImageInput = document.getElementById('profileImageUpload');
+const profileImageList = document.getElementById('profileImageList');
 const imageInput = document.getElementById('imageUpload');
-const videoInput = document.getElementById('videoUpload');
 const imageList = document.getElementById('imageList');
-const videoList = document.getElementById('videoList');
 const uploadForm = document.getElementById('uploadForm');
 
+let profileImageArray = [];
 let imageArray = [];
-let videoArray = [];
+const maxImages = 4;
 
-if (imageInput || videoInput || imageList || videoList || uploadForm ) {
-imageInput.addEventListener('change', handleImageSelect);
-videoInput.addEventListener('change', handleVideoSelect);
-imageList.addEventListener('click', handleFileRemove);
-videoList.addEventListener('click', handleFileRemove);
+if (profileImageInput || profileImageList || imageInput || imageList || uploadForm) {
+    // Add event listener for profile image upload
+    profileImageInput.addEventListener('change', handleProfileImageSelect);
 
-function handleImageSelect(event) {
-    const files = Array.from(event.target.files);
-    imageArray = imageArray.concat(files);
-    renderFileList(imageArray, imageList, 'image');
-}
+    // Add event listener for general image upload
+    imageInput.addEventListener('change', handleImageSelect);
 
-function handleVideoSelect(event) {
-    const files = Array.from(event.target.files);
-    videoArray = videoArray.concat(files);
-    renderFileList(videoArray, videoList, 'video');
-}
+    // Handle removal of images from the list
+    profileImageList.addEventListener('click', handleFileRemove);
+    imageList.addEventListener('click', handleFileRemove);
 
-function handleFileRemove(event) {
-    if (event.target.tagName === 'BUTTON') {
-        const index = event.target.getAttribute('data-index');
-        const type = event.target.getAttribute('data-type');
-        if (type === 'image') {
-            imageArray.splice(index, 1);
-            renderFileList(imageArray, imageList, 'image');
-        } else if (type === 'video') {
-            videoArray.splice(index, 1);
-            renderFileList(videoArray, videoList, 'video');
+    // Function to handle profile image selection
+    function handleProfileImageSelect(event) {
+        const files = Array.from(event.target.files);
+
+        // Ensure only one profile image can be added
+        if (files.length > 0) {
+            profileImageArray = [files[0]]; // Keep only the latest selected image
+            renderFileList(profileImageArray, profileImageList, 'profileImage');
         }
     }
-}
 
-function renderFileList(fileArray, fileList, type) {
-    fileList.innerHTML = '';
-    fileArray.forEach((file, index) => {
-        const listItem = document.createElement('li');
-        listItem.classList.add('file-item');
+    // Function to handle general image selection
+    function handleImageSelect(event) {
+        const files = Array.from(event.target.files);
 
-        const filePreview = document.createElement('img');
-        if (type === 'image') {
-            filePreview.src = URL.createObjectURL(file);
-        } else if (type === 'video') {
-            filePreview.src = 'path_to_static_video_thumbnail_image'; // Replace with the path to your static image
+        if (imageArray.length + files.length > maxImages) {
+            alert(`شما می توانید تا سقف ${maxImages} تصویر آپلود کنید.`);
+            return; // Prevent adding more than the allowed number of images
         }
 
-        listItem.innerHTML = `
-            <span>${file.name}</span>
-            <button type="button" data-index="${index}" data-type="${type}">Remove</button>
-        `;
-        listItem.insertBefore(filePreview, listItem.firstChild);
-        fileList.appendChild(listItem);
+        imageArray = imageArray.concat(files);
+        renderFileList(imageArray, imageList, 'image');
+    }
+
+    // Function to handle file removal from the list
+    function handleFileRemove(event) {
+        if (event.target.tagName === 'BUTTON') {
+            const index = event.target.getAttribute('data-index');
+            const type = event.target.getAttribute('data-type');
+
+            if (type === 'profileImage') {
+                profileImageArray.splice(index, 1);
+                renderFileList(profileImageArray, profileImageList, 'profileImage');
+            } else if (type === 'image') {
+                imageArray.splice(index, 1);
+                renderFileList(imageArray, imageList, 'image');
+            }
+        }
+    }
+
+    // Function to render the list of selected files
+    function renderFileList(fileArray, fileList, type) {
+        fileList.innerHTML = '';
+        fileArray.forEach((file, index) => {
+            const listItem = document.createElement('li');
+            listItem.classList.add('file-item');
+
+            const filePreview = document.createElement('img');
+            filePreview.src = URL.createObjectURL(file);
+
+            listItem.innerHTML = `
+                <span>${file.name}</span>
+                <button type="button" data-index="${index}" data-type="${type}"><i class="bi bi-x-lg"></i></button>
+            `;
+            listItem.insertBefore(filePreview, listItem.firstChild);
+            fileList.appendChild(listItem);
+        });
+    }
+
+    // Handle form submission
+    uploadForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(uploadForm);
+
+        profileImageArray.forEach(file => {
+            formData.append('profile_image', file);
+        });
+
+        imageArray.forEach(file => {
+            formData.append('images[]', file);
+        });
+
+        fetch('upload.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert('Files uploaded successfully!');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
     });
 }
 
-uploadForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(uploadForm);
-    imageArray.forEach(file => {
-        formData.append('images[]', file);
-    });
-    videoArray.forEach(file => {
-        formData.append('videos[]', file);
-    });
-
-    fetch('upload.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert('Files uploaded successfully!');
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-});
-}
 
 // --------------------
 // tour showing
 
-(function() {
-    let slideIndex = 0;
-    let slides = document.getElementsByClassName("mySlides");
-    if(slides && slides.length!=0){
-        showSlides();
+// (function() {
+//     let slideIndex = 0;
+//     const slidesData = [
+//         { src: "elantra-ogi.webp", caption: "Caption Text 1" },
+//         { src: "MjE1MjEx92nX.jpg", caption: "Caption Text 2" },
+//         { src: "villa-1-1280x720.jpg", caption: "Caption Text 3" }
+//     ];
+
+//     // Generate slides dynamically
+//     const slideshowContainer = document.querySelector('.slideshow-container');
+//     slidesData.forEach((slide, index) => {
+//         const slideDiv = document.createElement('div');
+//         slideDiv.className = 'mySlides fade';
+        
+//         const numberTextDiv = document.createElement('div');
+//         numberTextDiv.className = 'numbertext';
+//         numberTextDiv.textContent = `${index + 1} / ${slidesData.length}`;
+        
+//         const img = document.createElement('img');
+//         img.src = slide.src;
+//         img.style.width = '100%';
+        
+//         const textDiv = document.createElement('div');
+//         textDiv.className = 'text';
+//         textDiv.textContent = slide.caption;
+        
+//         slideDiv.appendChild(numberTextDiv);
+//         slideDiv.appendChild(img);
+//         slideDiv.appendChild(textDiv);
+//         slideshowContainer.appendChild(slideDiv);
+//     });
+
+//     let slides = document.getElementsByClassName("mySlides");
+
+//     function showSlides() {
+//         let i;
+//         for (i = 0; i < slides.length; i++) {
+//             slides[i].style.display = "none";
+//         }
+//         slides[slideIndex].style.display = "block";
+//     }
+
+//     function plusSlides() {
+//         slideIndex += 1;
+//         if (slideIndex >= slides.length) {
+//             slideIndex = slides.length - 1;
+//             return;
+//         } else {
+//             showSlides();
+//         }
+//     }
+
+//     function minusSlides() {
+//         slideIndex -= 1;
+//         if (slideIndex < 0) {
+//             slideIndex = 0;
+//             return;
+//         }
+//         showSlides();
+//     }
+
+//     function currentSlide(n) {
+//         slideIndex = n - 1;
+//         showSlides();
+//     }
+
+//     // Initial display of the first slide
+//     showSlides();
+
+//     // Expose functions to the global scope if needed
+//     window.plusSlides = plusSlides;
+//     window.minusSlides = minusSlides;
+//     window.currentSlide = currentSlide;
+// })();
+// Array of images and the total number of slides
+const images = [
+    'https://via.placeholder.com/800x400?text=Slide+1',
+    'https://via.placeholder.com/800x400?text=Slide+2',
+    'https://via.placeholder.com/800x400?text=Slide+3',
+    'https://via.placeholder.com/800x400?text=Slide+4'
+];
+const numberOfSlides = images.length;
+
+let currentSlide = 0;
+
+const slideshow = document.querySelector('.slideshow');
+const slideshowContainer = document.querySelector('.slideshow-container');
+
+// Inject slides into the slideshow
+function createSlides() {
+    images.forEach((src, index) => {
+        const slide = document.createElement('div');
+        slide.classList.add('slide');
+        slide.innerHTML = `<img src="${src}" alt="Slide ${index + 1}">`;
+        slideshow.appendChild(slide);
+    });
+}
+
+
+// Inject dots into the dots container
+function createDots() {
+    const dotsContainer = document.querySelector('.dots-container');
+    for (let i = 0; i < numberOfSlides; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        dot.setAttribute('onclick', `currentSlide=${i}; showSlide();`);
+        dotsContainer.appendChild(dot);
     }
-    function showSlides() {
-      let i;
-      let dots = document.getElementsByClassName("dot");
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      // slideIndex++;
-      // if (slideIndex > slides.length) {slideIndex = 1}
-      for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-      }
-      slides[slideIndex].style.display = "block";
-      slides[slideIndex].className += " show";
-      dots[slideIndex].className += " active";
-      // setTimeout(showSlides, 4000); // Change image every 4 seconds
+}
+
+// Show the current slide
+function showSlide() {
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+
+    if (currentSlide >= numberOfSlides) {
+        currentSlide = 0;
     }
-  
-    function plusSlides() {
-      slideIndex += 1;
-      console.log(slideIndex);
-      if (slideIndex == slides.length) {
-        slideIndex -= 1;
-        return;
-      } else {
-        showSlides();
-      }
+    if (currentSlide < 0) {
+        currentSlide = numberOfSlides - 1;
     }
-  
-    function minusSlides() {
-      slideIndex -= 1;
-      if (slideIndex == -1) {
-        slideIndex = 0;
-        return;
-      }
-      showSlides();
-    }
-  
-    function currentSlide(n) {
-      slideIndex = n - 1;
-      showSlides();
-    }
-  
-    // Expose functions to the global scope if needed
-    window.plusSlides = plusSlides;
-    window.minusSlides = minusSlides;
-    window.currentSlide = currentSlide;
-  })();
-  
+
+    slides.forEach((slide, index) => {
+        slide.style.transform = `translateX(-${currentSlide * 100}%)`;
+    });
+
+    dots.forEach((dot, index) => {
+        dot.classList.remove('active');
+    });
+
+    dots[currentSlide].classList.add('active');
+}
+
+// Change slide when clicking on the next/prev buttons
+function changeSlide(step) {
+    currentSlide += step;
+    showSlide();
+}
+
+// Initialize the slideshow
+function initSlideshow() {
+    createSlides();
+    createDots();
+    showSlide();
+}
+
+// Run the slideshow initialization
+if(numberOfSlides!=0){
+    initSlideshow();
+}else{
+    slideshowContainer.style.display="none";
+}
+
 
 // ---------------------
 // orders list

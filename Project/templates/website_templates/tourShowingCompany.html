@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    {% comment %} <link rel="stylesheet" href="../../statics/css/styles.css"> {% endcomment %}
+
+    <!-- <link rel="stylesheet" href="../../statics/css/styles.css">
+    <link rel="stylesheet" href="../../statics/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../statics/css/bootstrap-icons.min.css"> -->
 
     
     <title>نمایش تور (شرکت)</title>
@@ -92,7 +95,7 @@
         <div class="companyDescription">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam exercitationem hic dolorem eum veniam odio quisquam, vitae eius ducimus enim. Laboriosam voluptatum mollitia nobis neque sequi modi obcaecati, pariatur minus.</p>
         </div>
-        <div class="slideshow-container">
+        <!-- <div class="slideshow-container">
 
             <div class="mySlides fade">
                 <div class="numbertext">1 / 3</div>
@@ -121,6 +124,18 @@
             <span class="dot" onclick="currentSlide(1)"></span> 
             <span class="dot" onclick="currentSlide(2)"></span> 
             <span class="dot" onclick="currentSlide(3)"></span> 
+        </div> -->
+        <div class="slideshow-container">
+            <div class="slideshow">
+                <!-- Slides will be injected here by JavaScript -->
+            </div>
+        
+            <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+            <a class="next" onclick="changeSlide(1)">&#10095;</a>
+        
+            <div class="dots-container">
+                <!-- Dots will be injected here by JavaScript -->
+            </div>
         </div>
         
     </div>
@@ -134,10 +149,12 @@
             <p>شماره تماس: (123) 456-7890</p>
             <p>ایمیل: info@company.com</p>
         </div>
-        <div class="orderButtonDiv">
+        <div class="orderSectionButtons">
             <button class="order-btn">ثبت سفارش</button>
         </div>
     </div>
 </body>
 <script src="{% static 'js/scripts.js' %}"></script>
+<!-- <script src="../../statics/js/scripts.js"></script> -->
+
 </html>
