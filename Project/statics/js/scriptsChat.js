@@ -181,33 +181,63 @@
 
 (function(){
 
-  // Data for contacts
-  const contacts = [
-      { name: "علیرضا", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg", status: "online" },
-      { name: "هومان", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_02.jpg", status: "left 7 mins ago" },
-      { name: "صدرا", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_03.jpg", status: "online" },
-      { name: "Erica Hughes", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_04.jpg", status: "online" },
-      { name: "Ginger Johnston", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_05.jpg", status: "online" },
-      { name: "Tracy Carpenter", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_06.jpg", status: "left 30 mins ago" },
-      { name: "Christian Kelly", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_07.jpg", status: "left 10 hours ago" },
-      { name: "Monica Ward", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_08.jpg", status: "online" },
-      { name: "Dean Henry", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_09.jpg", status: "offline since Oct 28" },
-      { name: "Peyton Mckinney", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_10.jpg", status: "online" }
-  ];
 
-  // Data for chat messages per contact
-  const messages = {
-      "علیرضا": [
-          { sender: 'Olia', message: 'Hey, علیرضا! How are you?', time: '10:30 AM', type: 'outgoing' },
-          { sender: 'علیرضا', message: 'I\'m good, thanks for asking!', time: '10:32 AM', type: 'incoming' },
-          { sender: 'Olia', message: 'Glad to hear that.', time: '10:34 AM', type: 'outgoing' }
-      ],
-      "هومان": [
-          { sender: 'Olia', message: 'Hello هومان! What\'s up?', time: '11:00 AM', type: 'outgoing' },
-          { sender: 'هومان', message: 'Not much, just working on some projects.', time: '11:05 AM', type: 'incoming' }
-      ],
-      // Add more messages for other contacts as needed
-  };
+  // Function to fetch contacts from the backend
+  async function fetchContacts() {
+    try {
+      const response = await fetch('http://localhost:8000/api/contacts/');
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching contacts:', error);
+      return [];
+    }
+  }
+
+  // Function to fetch messages from the backend
+  async function fetchMessages() {
+    try {
+      const response = await fetch('http://localhost:8000/api/messages/');
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching messages:', error);
+      return {};
+    }
+  }
+
+  // Initialize the chat application
+  async function initChat() {
+    const contacts = await fetchContacts();
+    const messages = await fetchMessages();
+  }
+//   // Data for contacts
+//   const contacts = [
+//       { name: "علیرضا", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg", status: "online" },
+//       { name: "هومان", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_02.jpg", status: "left 7 mins ago" },
+//       { name: "صدرا", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_03.jpg", status: "online" },
+//       { name: "Erica Hughes", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_04.jpg", status: "online" },
+//       { name: "Ginger Johnston", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_05.jpg", status: "online" },
+//       { name: "Tracy Carpenter", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_06.jpg", status: "left 30 mins ago" },
+//       { name: "Christian Kelly", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_07.jpg", status: "left 10 hours ago" },
+//       { name: "Monica Ward", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_08.jpg", status: "online" },
+//       { name: "Dean Henry", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_09.jpg", status: "offline since Oct 28" },
+//       { name: "Peyton Mckinney", img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_10.jpg", status: "online" }
+//   ];
+
+//   // Data for chat messages per contact
+//   const messages = {
+//       "علیرضا": [
+//           { sender: 'Olia', message: 'Hey, علیرضا! How are you?', time: '10:30 AM', type: 'outgoing' },
+//           { sender: 'علیرضا', message: 'I\'m good, thanks for asking!', time: '10:32 AM', type: 'incoming' },
+//           { sender: 'Olia', message: 'Glad to hear that.', time: '10:34 AM', type: 'outgoing' }
+//       ],
+//       "هومان": [
+//           { sender: 'Olia', message: 'Hello هومان! What\'s up?', time: '11:00 AM', type: 'outgoing' },
+//           { sender: 'هومان', message: 'Not much, just working on some projects.', time: '11:05 AM', type: 'incoming' }
+//       ],
+//       // Add more messages for other contacts as needed
+//   };
 
   var searchFilter = {
       options: { valueNames: ['name'] },
