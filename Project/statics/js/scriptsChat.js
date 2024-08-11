@@ -1,84 +1,59 @@
 (function(){
-  
-  var chat = {
-    messageToSend: '',
-    messageResponses: [
-      'Why did the web developer leave the restaurant? Because of the table layout.',
-      'How do you comfort a JavaScript bug? You console it.',
-      'An SQL query enters a bar, approaches two tables and asks: "May I join you?"',
-      'What is the most used language in programming? Profanity.',
-      'What is the object-oriented way to become wealthy? Inheritance.',
-      'An SEO expert walks into a bar, bars, pub, tavern, public house, Irish pub, drinks, beer, alcohol'
-    ],
-    init: function() {
-      this.cacheDOM();
-      this.bindEvents();
-      this.render();
-    },
-    cacheDOM: function() {
-      this.$chatHistory = $('.chat-history');
-      this.$button = $('button');
-      this.$textarea = $('#message-to-send');
-      this.$chatHistoryList =  this.$chatHistory.find('ul');
-    },
-    bindEvents: function() {
-      this.$button.on('click', this.addMessage.bind(this));
-      this.$textarea.on('keyup', this.addMessageEnter.bind(this));
-    },
-    render: function() {
-      this.scrollToBottom();
-      if (this.messageToSend.trim() !== '') {
-        var template = Handlebars.compile( $("#message-template").html());
-        var context = { 
-          messageOutput: this.messageToSend,
-          time: this.getCurrentTime()
-        };
 
-        this.$chatHistoryList.append(template(context));
-        this.scrollToBottom();
-        this.$textarea.val('');
-        
-        // responses
-        var templateResponse = Handlebars.compile( $("#message-response-template").html());
-        var contextResponse = { 
-          response: this.getRandomItem(this.messageResponses),
-          time: this.getCurrentTime()
-        };
-        
-        setTimeout(function() {
-          this.$chatHistoryList.append(templateResponse(contextResponse));
-          this.scrollToBottom();
-        }.bind(this), 1500);
-        
-      }
-      
+  // Data for contacts
+  const contacts = [
+    {
+      name: "علیرضا",
+      img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg",
+      status: "online"
     },
-    
-    addMessage: function() {
-      this.messageToSend = this.$textarea.val()
-      this.render();         
+    {
+      name: "هومان",
+      img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_02.jpg",
+      status: "left 7 mins ago"
     },
-    addMessageEnter: function(event) {
-        // enter was pressed
-        if (event.keyCode === 13) {
-          this.addMessage();
-        }
+    {
+      name: "صدرا",
+      img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_03.jpg",
+      status: "online"
     },
-    scrollToBottom: function() {
-       this.$chatHistory.scrollTop(this.$chatHistory[0].scrollHeight);
+    {
+      name: "Erica Hughes",
+      img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_04.jpg",
+      status: "online"
     },
-    getCurrentTime: function() {
-      return new Date().toLocaleTimeString().
-              replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
+    {
+      name: "Ginger Johnston",
+      img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_05.jpg",
+      status: "online"
     },
-    getRandomItem: function(arr) {
-      return arr[Math.floor(Math.random()*arr.length)];
+    {
+      name: "Tracy Carpenter",
+      img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_06.jpg",
+      status: "left 30 mins ago"
+    },
+    {
+      name: "Christian Kelly",
+      img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_07.jpg",
+      status: "left 10 hours ago"
+    },
+    {
+      name: "Monica Ward",
+      img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_08.jpg",
+      status: "online"
+    },
+    {
+      name: "Dean Henry",
+      img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_09.jpg",
+      status: "offline since Oct 28"
+    },
+    {
+      name: "Peyton Mckinney",
+      img: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_10.jpg",
+      status: "online"
     }
-    
-  };
-  
-  chat.init();
-  
+  ];
+
   var searchFilter = {
     options: { valueNames: ['name'] },
     init: function() {
@@ -94,10 +69,115 @@
       });
     }
   };
+
+  var chat = {
+    messageToSend: '',
+    messageResponses: [
+      'Why did the web developer leave the restaurant? Because of the table layout.',
+      'How do you comfort a JavaScript bug? You console it.',
+      'An SQL query enters a bar, approaches two tables and asks: "May I join you?"',
+      'What is the most used language in programming? Profanity.',
+      'What is the object-oriented way to become wealthy? Inheritance.',
+      'An SEO expert walks into a bar, bars, pub, tavern, public house, Irish pub, drinks, beer, alcohol'
+    ],
+    init: function() {
+      this.cacheDOM();
+      this.bindEvents();
+      this.render();
+      this.loadContacts();  // Load contacts into the contact list
+    },
+    cacheDOM: function() {
+      this.$chatHistory = $('.chat-history');
+      this.$button = $('button');
+      this.$textarea = $('#message-to-send');
+      this.$chatHistoryList =  this.$chatHistory.find('ul');
+      this.$contactsList = $('.list');
+    },
+    bindEvents: function() {
+      this.$button.on('click', this.addMessage.bind(this));
+      this.$textarea.on('keyup', this.addMessageEnter.bind(this));
+    },
+    render: function() {
+      this.scrollToBottom();
+      if (this.messageToSend.trim() !== '') {
+        var template = Handlebars.compile($("#message-template").html());
+        var context = { 
+          messageOutput: this.messageToSend,
+          time: this.getCurrentTime()
+        };
+
+        this.$chatHistoryList.append(template(context));
+        this.scrollToBottom();
+        this.$textarea.val('');
+        
+        // responses
+        var templateResponse = Handlebars.compile($("#message-response-template").html());
+        var contextResponse = { 
+          response: this.getRandomItem(this.messageResponses),
+          time: this.getCurrentTime()
+        };
+        
+        setTimeout(function() {
+          this.$chatHistoryList.append(templateResponse(contextResponse));
+          this.scrollToBottom();
+        }.bind(this), 1500);
+        
+      }
+      
+    },
+    
+    addMessage: function() {
+      this.messageToSend = this.$textarea.val();
+      this.render();         
+    },
+    addMessageEnter: function(event) {
+      // enter was pressed
+      if (event.keyCode === 13) {
+        this.addMessage();
+      }
+    },
+    scrollToBottom: function() {
+       this.$chatHistory.scrollTop(this.$chatHistory[0].scrollHeight);
+    },
+    getCurrentTime: function() {
+      return new Date().toLocaleTimeString().
+              replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
+    },
+    getRandomItem: function(arr) {
+      return arr[Math.floor(Math.random()*arr.length)];
+    },
+    loadContacts: function() {
+      const contactTemplate = (contact) => `
+        <li class="clearfix">
+          <img src="${contact.img}" alt="avatar" />
+          <div class="about">
+            <div class="name">${contact.name}</div>
+            <div class="status">
+              <i class="fa fa-circle ${contact.status.includes('online') ? 'online' : 'offline'}"></i> ${contact.status}
+            </div>
+          </div>
+        </li>
+      `;
+
+      // Clear the existing contacts
+      this.$contactsList.html('');
+
+      // Add each contact
+      contacts.forEach(contact => {
+        this.$contactsList.append(contactTemplate(contact));
+      });
+
+      // Initialize the search filter
+      searchFilter.init();
+    }
+  };
   
-  searchFilter.init();
+  chat.init();
+  
+  
   
 })();
+
 
 // -----------------------
 // image upload code
