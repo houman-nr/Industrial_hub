@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/stylesChat.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
         <link rel="stylesheet" href="../../statics/css/styles.css">
         <link rel="stylesheet" href="../../statics/css/stylesChat.css">
     <link rel="stylesheet" href="../../statics/css/bootstrap.min.css">
@@ -89,7 +90,7 @@
         </div>
     </div>
     <div class="homePageBody">
-        <div class="container clearfix">
+        <div class="chatContainer clearfix">
           <label for="people-List-SidBarCheckBox" id="people-List-Collapse">
             <input type="checkbox" id="people-List-SidBarCheckBox">
             <button class="people-List-CollapseButton">
@@ -152,28 +153,28 @@
       </div> <!-- end container -->
       
       <script id="message-template" type="text/x-handlebars-template">
-          <li class="clearfix">
-              <div class="message-data align-right">
-                  <span class="message-data-time">{{time}}, امروز</span> &nbsp; &nbsp;
-                  <span class="message-data-name">Olia</span> <i class="fa fa-circle me"></i>
-              </div>
-              <div class="message other-message float-right">
-                  {{messageOutput}}
-              </div>
-          </li>
-      </script>
-      
-      <script id="message-response-template" type="text/x-handlebars-template">
-          <li>
-              <div class="message-data">
-                  <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
-                  <span class="message-data-time">{{time}}, امروز</span>
-              </div>
-              <div class="message my-message">
-                  {{response}}
-              </div>
-          </li>
-      </script>
+        <li class="clearfix">
+            <div class="message-data text-right">
+                <span style="display: inline-block;" class="message-data-name">شما</span>
+                <span style="display: inline-block;" class="message-data-time">{{time}}</span>
+            </div>
+            <div class="message my-message float-right">
+                {{messageOutput}}
+            </div>
+        </li>
+    </script>
+    
+    <script id="message-response-template" type="text/x-handlebars-template">
+        <li>
+            <div class="message-data">
+                <span style="display: inline-block;" class="message-data-name">{{sender}}</span>
+                <span style="display: inline-block;" class="message-data-time">{{time}}</span>
+            </div>
+            <div class="message other-message ">
+                {{response}}
+            </div>
+        </li>
+    </script>
       
         
     </div>

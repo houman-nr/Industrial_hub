@@ -5,11 +5,11 @@
 .homePageBody{
   font: 14px/20px "Lato", Arial, sans-serif;
 }
-.container {
+.chatContainer {
   margin: 0 auto;
-  width: 750px;
+  /* width: 750px; */
   height: 118vh;
-  /* width: 50%; */
+  width: 80%;
   /* background: #444753; */
   border-radius: 5px;
   display: flex;
@@ -208,14 +208,18 @@ background: linear-gradient(0deg, rgba(43,77,247,0.8) 0%, rgba(0,132,255,0.8) 23
   margin-left: -10px;
 }
 .chat .chat-history .my-message {
-  background: #7191bb;
+  background: #008cff;
 }
 .chat .chat-history .other-message {
-  background: #008cff;
+  background: #7191bb;
 }
 .chat .chat-history .other-message:after {
   border-bottom-color: #0051ff;
+  /* left: 93%; */
+}
+.chat .chat-history .my-message:after{
   left: 93%;
+  
 }
 .chat .chat-message {
   padding: 30px;
@@ -308,6 +312,9 @@ background: linear-gradient(0deg, rgba(43,77,247,0.8) 0%, rgba(0,132,255,0.8) 23
 }
 
 .align-right {
+  text-align: right;
+}
+.text-right{
   text-align: right;
 }
 

@@ -23,6 +23,7 @@ from chatapp.views import contact_list, chat_list, chat_membership_list, message
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('website.urls')),
+    path('chatapp/', include('chatapp.urls', namespace='chatapp')),
     path('authentication/', include('authentication.urls')),
     path('api/contacts/', contact_list, name='contact-list'),
     path('api/chats/', chat_list, name='chat-list'),

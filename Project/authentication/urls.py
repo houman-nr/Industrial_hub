@@ -24,6 +24,6 @@ urlpatterns = [
     path('login_company/', login_company_view, name='login_company'),
     path('login_customer/', login_customer_view, name='login_customer'),
     path('logout/', logout_view, name='logout'),
-        path('edit_company_profile/', edit_company_profile_view, name='edit_company_profile'),
+    path('edit_company_profile/', edit_company_profile_view, name='edit_company_profile'),
     path('edit_customer_profile/', edit_customer_profile_view, name='edit_customer_profile'),
 ]

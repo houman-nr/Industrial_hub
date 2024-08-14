@@ -19,3 +19,9 @@ def chat_membership_list(request):
 def message_list(request):
     messages = Message.objects.all().values('chat__name', 'user__username', 'content', 'timestamp', 'is_read')
     return JsonResponse(list(messages), safe=False)
+
+def company_chat(request):
+    return render(request, 'website_templates/chatPageCompany.html')
+
+def customer_chat(request):
+    return render(request, 'website_templates/chatPageCustomer.html')
