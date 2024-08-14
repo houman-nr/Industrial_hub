@@ -1,0 +1,23 @@
+<div class="companies">
+    {% for tour in tours %}
+    <a class="company-card" href="{% url 'website:tour_detail' tour.id %}"> <!-- Assuming you have a detail page for tours -->
+        <div class="company-image">
+            <img src="{{ tour.profile_image.url }}" alt="{{ tour.company_user.company_name }}">
+        </div>
+        <div class="company-info">
+            <h2 class="company-name">{{ tour.company_user.company_name }}</h2>
+            <p class="company-address">{{ tour.company_user.company_address }}</p>
+            <div class="comentAndView">
+                {% comment %} <div class="comment">
+                    <i class="bi bi-chat"></i>
+                    <p>{{ tour.comments.count }}</p>
+                </div> {% endcomment %}
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+    {% comment %} <div class="seeMoreBtn">
+        <button>مشاهده بیشتر</button>
+        <i class="bi bi-arrow-down"></i>
+    </div> {% endcomment %}
+</div>

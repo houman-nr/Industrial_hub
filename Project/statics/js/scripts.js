@@ -251,31 +251,31 @@ if (profileImageInput || profileImageList || imageInput || imageList || uploadFo
     }
 
     // Handle form submission
-    uploadForm.addEventListener('submit', (event) => {
-        event.preventDefault();
+    // uploadForm.addEventListener('submit', (event) => {
+    //     event.preventDefault();
 
-        const formData = new FormData(uploadForm);
+    //     const formData = new FormData(uploadForm);
 
-        profileImageArray.forEach(file => {
-            formData.append('profile_image', file);
-        });
+    //     profileImageArray.forEach(file => {
+    //         formData.append('profile_image', file);
+    //     });
 
-        imageArray.forEach(file => {
-            formData.append('images[]', file);
-        });
+    //     imageArray.forEach(file => {
+    //         formData.append('images[]', file);
+    //     });
 
-        fetch('upload.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert('Files uploaded successfully!');
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    });
+    //     fetch(uploadForm.action, {
+    //         method: 'POST',
+    //         body: formData
+    //     })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         alert('Files uploaded successfully!');
+    //     })
+    //     .catch(error => {
+    //         console.error('Error:', error);
+    //     });
+    // });
 }
 
 

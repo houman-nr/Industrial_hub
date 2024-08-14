@@ -20,8 +20,8 @@ from website.views import *
 app_name = 'website'
 urlpatterns = [
     path('', home_view, name='home'),
-    
-    # path('signup/', views.signup, name='signup'),
-    # path('login/', views.login, name='login'),
-    # path('logout/', views.logout, name='logout'),
+    path('tour_create/', tour_create_view, name='tour_create'),
+    path('tour/<int:tour_id>/', tour_detail_view, name='tour_detail'),
+    path('own_tour_detail/<int:tour_id>/', own_tour_detail_view, name='own_tour_detail')
+
 ]

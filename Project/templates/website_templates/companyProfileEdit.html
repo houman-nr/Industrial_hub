@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{%load static%}
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    {% comment %} <link rel="stylesheet" href="../../statics/css/styles.css">
-    <link rel="stylesheet" href="../../statics/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../statics/css/bootstrap-icons.min.css"> {% endcomment %}
-
     <title>ویرایش پروفایل کمپانی</title>
 </head>
 <body>
@@ -34,13 +30,13 @@
         </header>
         <div class="profileOptions">
             <ul>
-                <li><a href="">ویرایش پروفایل</a></li>
-                <li><a href="">خروج</a></li>
+                <li><a href="{% url 'authentication:edit_company_profile' %}">ویرایش پروفایل</a></li>
+                <li><a href="{% url 'authentication:logout' %}">خروج</a></li>
                 <li><a href="">پیام رسان</a></li>
             </ul>
             <ul>
-                <li><a href="tourCreating.html">ساخت تور</a></li>
-                <li><a href="tourEditing.html">ویرایش تور</a></li>
+                <li><a href="{% url 'website:tour_create' %}">ساخت تور</a></li>
+                {% comment %} <li><a href="tourEditing.html">ویرایش تور</a></li> {% endcomment %}
                 <li><a href="">نظرات</a></li>
             </ul>
         </div>
@@ -61,7 +57,7 @@
         </button>
     </label>
     <div class='Header'>
-        <div class='top'>            
+        <div class='top'>
             <img class="headerLogoImage" src="{% static 'images/Logo.png' %}" alt="لوگو" />
             <input type="checkbox" id="openForm">
             <button class="profileButton">
@@ -78,7 +74,7 @@
             <a href="" class='searchBarIcon'>
                 <i class="bi bi-search"></i>
             </a>
-            <input type="text"  placeholder='جست و جو......' class='searchBarInput'/>
+            <input type="text" placeholder='جست و جو......' class='searchBarInput'/>
         </div>
     </div>
     <div class="homePageBody">
@@ -88,49 +84,50 @@
         </svg>
         <div class="container">
             <div class="formContainer">
-            <div class="ProfileEdit">
-                <header>
-                    <h2>ویرایش اطلاعات پروفایل</h2>
-                </header>
-                <form action="#">
-                    <div class="formRow">
-                        <label htmlFor="">ایمیل</label>
-                        <input type="text" placeholder='آدرس ایمیل.......' required/>
-                    </div>
-                    <div class="formRow">
-                        <label htmlFor="">نام کاربری</label>
-                        <input type="text" placeholder='نام کاربری.........' required/>
-                    </div>
-                    <div class="formRow">
-                        <label htmlFor="">نام شرکت</label>
-                        <input type="text" placeholder='نام شرکت.........' required/>
-                    </div>
-                    <div class="formRow">
-                        <label htmlFor="">آدرس شرکت</label>
-                        <input type="text" placeholder='آدرس شرکت.........' required/>
-                    </div>
-                    <div class="formRow">
-                        <label htmlFor="">شماره تلفن شرکت</label>
-                        <input type="text" placeholder='شماره تلفن شرکت.........' required/>
-                    </div>
-                    <div class="formRow">
-                        <label htmlFor="">رمز عبور قبلی</label>
-                        <input type="password" placeholder='رمز عبور.......' required/>
-                    </div>
-                    <div class="formRow">
-                        <label htmlFor="">رمز عبور جدید</label>
-                        <input type="password" placeholder='رمز عبور.......' required/>
-                    </div>
-                    <div class="formRow">
-                        <label htmlFor="">تکرار رمز عبور جدید</label>
-                        <input type="password" placeholder='تکرار رمز عبور.....' required/>
-                    </div>
-                    <div class="signUpButton formRow">
-                        <input type="submit" value="ثبت تغییرات"/>
-                    </div>
-                </form>
+                <div class="ProfileEdit">
+                    <header>
+                        <h2>ویرایش اطلاعات پروفایل</h2>
+                    </header>
+                    <form action="{% url 'authentication:edit_company_profile' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="formRow">
+                            <label for="email">ایمیل</label>
+                            <input type="text" id="email" name="email" placeholder='آدرس ایمیل.......' required/>
+                        </div>
+                        {% comment %} <div class="formRow">
+                            <label for="username">نام کاربری</label>
+                            <input type="text" id="username" name="username" placeholder='نام کاربری.........' required/>
+                        </div> {% endcomment %}
+                        <div class="formRow">
+                            <label for="company_name">نام شرکت</label>
+                            <input type="text" id="company_name" name="company_name" placeholder='نام شرکت.........' required/>
+                        </div>
+                        <div class="formRow">
+                            <label for="company_address">آدرس شرکت</label>
+                            <input type="text" id="company_address" name="company_address" placeholder='آدرس شرکت.........' required/>
+                        </div>
+                        <div class="formRow">
+                            <label for="company_phone">شماره تلفن شرکت</label>
+                            <input type="text" id="company_phone" name="company_phone" placeholder='شماره تلفن شرکت.........' required/>
+                        </div>
+                        {% comment %} <div class="formRow">
+                            <label for="old_password">رمز عبور قبلی</label>
+                            <input type="password" id="old_password" placeholder='رمز عبور.......' required/>
+                        </div> {% endcomment %}
+                        {% comment %} <div class="formRow">
+                            <label for="new_password">رمز عبور جدید</label>
+                            <input type="password" id="new_password"  name="password1" placeholder='رمز عبور.......' required/>
+                        </div>
+                        <div class="formRow">
+                            <label for="new_password_confirm">تکرار رمز عبور جدید</label>
+                            <input type="password" id="new_password_confirm" name="password2" placeholder='تکرار رمز عبور.....' required/>
+                        </div> {% endcomment %}
+                        <div class="signUpButton formRow">
+                            <input type="submit" value="ثبت تغییرات"/>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
         </div>
     </div>
 </body>

@@ -1,12 +1,18 @@
 from django.db import models
-# class Tour(models.Model):
-#     profile_image = models.ImageField(upload_to='profile_images/')
-#     description = models.TextField()
+from authentication.models import CompanyUser
+from django.utils import timezone
+class Tour(models.Model):
+    company_user = models.ForeignKey(CompanyUser, on_delete=models.CASCADE, related_name='tours')
+    profile_image = models.ImageField(upload_to='tours/profile_images/')
+    description = models.TextField()
+    created_at = models.DateTimeField(default=timezone.now)
 
-# class TourImage(models.Model):
-#     tour = models.ForeignKey(Tour, related_name='images', on_delete=models.CASCADE)
-#     image = models.ImageField(upload_to='tour_images/')
+    def __str__(self):
+        return f"{self.company_user.company_name} - Tour"
 
-# class TourVideo(models.Model):
-#     tour = models.ForeignKey(Tour, related_name='videos', on_delete=models.CASCADE)
-#     video = models.FileField(upload_to='tour_videos/')
+class TourImage(models.Model):
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='tours/images/')
+
+    def __str__(self):
+        return f"{self.tour.company_user.company_name} - Image"
