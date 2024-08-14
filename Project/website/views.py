@@ -79,15 +79,15 @@ def own_tour_detail_view(request, tour_id):
 
 
 
-def all_tours_view(request):
+# def all_tours_view(request):
 
-    tours_list = Tour.objects.order_by('-created_at')
+#     tours_list = Tour.objects.order_by('-created_at')
 
-    paginator = Paginator(tours_list, 4)
-    page_number = request.GET.get('page')  
-    page_obj = paginator.get_page(page_number)  
+#     paginator = Paginator(tours_list, 4)
+#     page_number = request.GET.get('page')  
+#     page_obj = paginator.get_page(page_number)  
 
-    context = {
-        'page_obj': page_obj,  
-    }
-    return render(request, 'website_templates/.html', context)
+#     context = {
+#         'page_obj': page_obj,  
+#     }
+#     return render(request, 'website_templates/.html', context)

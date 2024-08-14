@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {%load static%}
+{% load tour_tags %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -42,7 +43,6 @@
             <ul>
                 <li><a href="{% url 'website:tour_create' %}">ساخت تور</a></li>
                 {% comment %} <li><a href="tourEditing.html">ویرایش تور</a></li> {% endcomment %}
-                <li><a href="">نظرات</a></li>
             </ul>
         </div>
     </div>
@@ -88,111 +88,10 @@
         <div class="company-list">
             <header>
                 <h3>
-                    آخرین شرکت های ثبت شده
+                    آخرین شرکت ها
                 </h3>
             </header>
-            <div class="companies">
-                <a class="company-card">
-                    <div class="company-image">
-                        <img src="" alt="Company 1" >
-                    </div>
-                    <div class="company-info">
-                        <h2 class="company-name">شرکت 1</h2>
-                        <p class="company-registered">تاریخ ثبت: 2020-01-01</p>
-                        <p class="company-address">آدرس:</p>
-                        <div class="comentAndView">
-                            <div class="view">
-                                <i class="bi bi-eye"></i>
-                                <p>2</p>
-                            </div>
-                            <div class="comment">
-                                <i class="bi bi-chat"></i>
-                                <p>2</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="company-card">
-                    <div class="company-image">
-                        <img src="" alt="Company 1" >
-                    </div>
-                    <div class="company-info">
-                        <h2 class="company-name">شرکت 1</h2>
-                        <p class="company-registered">تاریخ ثبت: 2020-01-01</p>
-                        <p class="company-address">آدرس:</p>
-                        <div class="comentAndView">
-                            <div class="view">
-                                <i class="bi bi-eye"></i>
-                                <p>2</p>
-                            </div>
-                            <div class="comment">
-                                <i class="bi bi-chat"></i>
-                                <p>2</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
-                <div class="seeMoreBtn">
-                    <button>مشاهده بیشتر</button>
-                    <i class="bi bi-arrow-down"></i>
-                </div>
-            </div>
-            <!-- Add more company cards as needed -->
-        </div>
-        <div class="company-list">
-            <header>
-                <h3>
-                    پربازدیدترین شرکت ها
-                </h3>
-            </header>
-            <div class="companies">
-                <a class="company-card">
-                    <div class="company-image">
-                        <img src="" alt="Company 1" >
-                    </div>
-                    <div class="company-info">
-                        <h2 class="company-name">شرکت 1</h2>
-                        <p class="company-registered">تاریخ ثبت: 2020-01-01</p>
-                        <p class="company-address">آدرس:</p>
-                        <div class="comentAndView">
-                            <div class="view">
-                                <i class="bi bi-eye"></i>
-                                <p>2</p>
-                            </div>
-                            <div class="comment">
-                                <i class="bi bi-chat"></i>
-                                <p>2</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a class="company-card">
-                    <div class="company-image">
-                        <img src="" alt="Company 1" >
-                    </div>
-                    <div class="company-info">
-                        <h2 class="company-name">شرکت 1</h2>
-                        <p class="company-registered">تاریخ ثبت: 2020-01-01</p>
-                        <p class="company-address">آدرس:</p>
-                        <div class="comentAndView">
-                            <div class="view">
-                                <i class="bi bi-eye"></i>
-                                <p>2</p>
-                            </div>
-                            <div class="comment">
-                                <i class="bi bi-chat"></i>
-                                <p>2</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <div class="seeMoreBtn">
-                    <button>مشاهده بیشتر</button>
-                    <i class="bi bi-arrow-down"></i>
-                </div>
-            </div>
-            <!-- Add more company cards as needed -->
+            {% show_latest_tours 5 %}
         </div>
         
     </div>
