@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stylesContactWithUs.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+
+    <link rel="stylesheet" href="../../statics/css/stylesContactWithUs.css">
+    <link rel="stylesheet" href="../../statics/css/styles.css">
+    <link rel="stylesheet" href="../../statics/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../statics/css/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+
+
+    <title>Document</title>
+</head>
+<body>
+    <ul class="formCircles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="profilePopUpMenu">
+      <header>
+          <span class="profilePicture">
+              <i class="bi bi-person-circle"></i>
+              <span class="profileName">{{user.username}}</span>
+          </span>
+          <button class="profilePopUpMenuCloseButton">
+              <i class="bi bi-x-lg"></i>
+          </button>
+      </header>
+      <div class="profileOptions">
+          <ul>
+              <li><a href="">ویرایش پروفایل</a></li>
+              <li><a href="">خروج</a></li>
+              <li><a href="">پیام رسان</a></li>
+          </ul>
+          <ul>
+              <li><a href="tourCreating.html">ساخت تور</a></li>
+              <li><a href="tourEditing.html">ویرایش تور</a></li>
+              <li><a href="">نظرات</a></li>
+          </ul>
+      </div>
+  </div>
+  <div class="navBarSideBar">
+      <div class="profileOptions">
+          <ul>
+              <li><a href="">تماس با ما</a></li>
+              <li><a href="">پنل فروشندگان و خریداران</a></li>
+              <li><a href="">لیست شرکت ها</a></li>
+          </ul>
+      </div>
+  </div>
+  <label for="navBarSidBarCheckBox" id="navbarCollapse">
+      <input type="checkbox" id="navBarSidBarCheckBox">
+      <button class="navbarCollapseButton">
+          <i class="bi bi-list"></i>
+      </button>
+  </label>
+  <div class='Header'>
+      <div class='top'>
+          
+          <img class="headerLogoImage" src="{% static 'images/Logo.png' %}" alt="لوگو" />
+          <input type="checkbox" id="openForm">
+          <!-- <button class="profileButton">
+              <i class="bi bi-person-circle"></i>
+          </button> -->
+      </div>
+      
+      <ul class='HeaderNavBarContainer'>
+          <li><a href="">تماس با ما</a></li>
+          <li><a href="">پنل فروشندگان و خریداران</a></li>
+          <li><a href="">لیست شرکت ها</a></li>
+      </ul>
+      <div class='searchBarContainer'>
+          <a href="" class='searchBarIcon'>
+              <i class="bi bi-search"></i>
+          </a>
+          <input type="text"  placeholder='جست و جو......' class='searchBarInput'/>
+      </div>
+  </div>
+  <div class="homePageBody">
+    <div class="contactUsContianer">
+      <div class="logoImage">
+        <img  src="../../statics/images/Logo.png" alt="لوگو" />
+      </div>
+      <div class="white-background">
+        <div class="social-media-links">
+          <a class="social-icon-link" href="#" id="itixd">
+            <i class="bi bi-telegram"></i>
+            <p>telegram</p>
+          </a>
+          <a class="social-icon-link" href="#" id="izxvt">
+              <i class="bi bi-envelope"></i>
+              <p>email</p>
+          </a>
+          <a class="social-icon-link" href="#" id="izldf-2-2">
+              <i class="bi bi-instagram"></i>
+              <p>instagram</p>
+          </a>
+        </div>
+      </div>
+        <!-- <svg class="curvedSyle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#00eeff" fill-opacity="1" d="M0,32L8.6,26.7C17.1,21,34,11,51,5.3C68.6,0,86,0,103,37.3C120,75,137,149,154,197.3C171.4,245,189,267,206,240C222.9,213,240,139,257,101.3C274.3,64,291,64,309,58.7C325.7,53,343,43,360,58.7C377.1,75,394,117,411,165.3C428.6,213,446,267,463,272C480,277,497,235,514,197.3C531.4,160,549,128,566,106.7C582.9,85,600,75,617,90.7C634.3,107,651,149,669,186.7C685.7,224,703,256,720,245.3C737.1,235,754,181,771,138.7C788.6,96,806,64,823,80C840,96,857,160,874,181.3C891.4,203,909,181,926,149.3C942.9,117,960,75,977,90.7C994.3,107,1011,181,1029,197.3C1045.7,213,1063,171,1080,144C1097.1,117,1114,107,1131,122.7C1148.6,139,1166,181,1183,176C1200,171,1217,117,1234,106.7C1251.4,96,1269,128,1286,144C1302.9,160,1320,160,1337,176C1354.3,192,1371,224,1389,224C1405.7,224,1423,192,1431,176L1440,160L1440,320L1431.4,320C1422.9,320,1406,320,1389,320C1371.4,320,1354,320,1337,320C1320,320,1303,320,1286,320C1268.6,320,1251,320,1234,320C1217.1,320,1200,320,1183,320C1165.7,320,1149,320,1131,320C1114.3,320,1097,320,1080,320C1062.9,320,1046,320,1029,320C1011.4,320,994,320,977,320C960,320,943,320,926,320C908.6,320,891,320,874,320C857.1,320,840,320,823,320C805.7,320,789,320,771,320C754.3,320,737,320,720,320C702.9,320,686,320,669,320C651.4,320,634,320,617,320C600,320,583,320,566,320C548.6,320,531,320,514,320C497.1,320,480,320,463,320C445.7,320,429,320,411,320C394.3,320,377,320,360,320C342.9,320,326,320,309,320C291.4,320,274,320,257,320C240,320,223,320,206,320C188.6,320,171,320,154,320C137.1,320,120,320,103,320C85.7,320,69,320,51,320C34.3,320,17,320,9,320L0,320Z"></path></svg> -->
+        <div class="map-address-container">
+          <div class="address">
+            <i class="bi bi-geo-alt-fill"></i>
+            <p>رشت، جاده تهران، دانشگاه گیلان</p>
+          </div>
+          <div class="map-container">
+            <div id="map"></div>
+          </div>
+        </div>
+    </div>
+  </div>
+</body>
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+<script>
+    // Initialize the map and set its view to Guilan University's location and zoom level
+    var map = L.map('map').setView([37.2792, 49.5851], 15);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Add a marker at the location of Guilan University
+    var marker = L.marker([37.2792, 49.5851]).addTo(map);
+
+    // Add a popup to the marker
+    marker.bindPopup("<b>Guilan University</b><br>Rasht, Guilan, Iran").openPopup();
+</script>
+<script src="{% static 'js/scripts.js' %}"></script>
+<script src="../../statics/js/scripts.js"></script>
+
+</html>
