@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{%load static%}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,14 +11,14 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
 
-    <link rel="stylesheet" href="../../statics/css/stylesContactWithUs.css">
+    {% comment %} <link rel="stylesheet" href="../../statics/css/stylesContactWithUs.css">
     <link rel="stylesheet" href="../../statics/css/styles.css">
     <link rel="stylesheet" href="../../statics/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../statics/css/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../../statics/css/bootstrap-icons.min.css"> {% endcomment %}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
 
 
-    <title>Document</title>
+    <title>contact_us</title>
 </head>
 <body>
     <ul class="formCircles">
@@ -27,29 +28,7 @@
         <li></li>
         <li></li>
     </ul>
-    <div class="profilePopUpMenu">
-      <header>
-          <span class="profilePicture">
-              <i class="bi bi-person-circle"></i>
-              <span class="profileName">{{user.username}}</span>
-          </span>
-          <button class="profilePopUpMenuCloseButton">
-              <i class="bi bi-x-lg"></i>
-          </button>
-      </header>
-      <div class="profileOptions">
-          <ul>
-              <li><a href="">ویرایش پروفایل</a></li>
-              <li><a href="">خروج</a></li>
-              <li><a href="">پیام رسان</a></li>
-          </ul>
-          <ul>
-              <li><a href="tourCreating.html">ساخت تور</a></li>
-              <li><a href="tourEditing.html">ویرایش تور</a></li>
-              <li><a href="">نظرات</a></li>
-          </ul>
-      </div>
-  </div>
+
   <div class="navBarSideBar">
       <div class="profileOptions">
           <ul>
@@ -69,14 +48,14 @@
       <div class='top'>
           
           <img class="headerLogoImage" src="{% static 'images/Logo.png' %}" alt="لوگو" />
-          <input type="checkbox" id="openForm">
+          
           <!-- <button class="profileButton">
               <i class="bi bi-person-circle"></i>
           </button> -->
       </div>
       
       <ul class='HeaderNavBarContainer'>
-          <li><a href="">تماس با ما</a></li>
+          <li><a href="{% url 'website:contact_us' %}">تماس با ما</a></li>
           <li><a href="">پنل فروشندگان و خریداران</a></li>
           <li><a href="">لیست شرکت ها</a></li>
       </ul>
@@ -90,7 +69,7 @@
   <div class="homePageBody">
     <div class="contactUsContianer">
       <div class="logoImage">
-        <img  src="../../statics/images/Logo.png" alt="لوگو" />
+        <img  src="{% static 'images/Logo.png' %}" alt="لوگو" />
       </div>
       <div class="white-background">
         <div class="social-media-links">

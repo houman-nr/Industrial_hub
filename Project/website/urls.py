@@ -22,6 +22,7 @@ urlpatterns = [
     path('', home_view, name='home'),
     path('tour_create/', tour_create_view, name='tour_create'),
     path('tour/<int:tour_id>/', tour_detail_view, name='tour_detail'),
-    path('own_tour_detail/<int:tour_id>/', own_tour_detail_view, name='own_tour_detail')
+    path('own_tour_detail/<int:tour_id>/', own_tour_detail_view, name='own_tour_detail'),
+    path('contact_us/', contact_us_view, name='contact_us')
 
 ]

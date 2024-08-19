@@ -91,3 +91,6 @@ def own_tour_detail_view(request, tour_id):
 #         'page_obj': page_obj,  
 #     }
 #     return render(request, 'website_templates/.html', context)
+
+def contact_us_view(request):
+    return render(request, 'website_templates/contactWithUs.html')

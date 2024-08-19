@@ -41,21 +41,20 @@
         </header>
         <div class="profileOptions">
             <ul>
-                <li><a href="">ویرایش پروفایل</a></li>
-                <li><a href="">خروج</a></li>
-                <li><a href="">پیام رسان</a></li>
+                <li><a href="{% url 'authentication:edit_company_profile' %}">ویرایش پروفایل</a></li>
+                <li><a href="{% url 'authentication:logout' %}">خروج</a></li>
+                <li><a href="{% url 'chatapp:company' %}">پیام رسان</a></li>
             </ul>
             <ul>
-                <li><a href="tourCreating.html">ساخت تور</a></li>
-                <li><a href="tourEditing.html">ویرایش تور</a></li>
-                <li><a href="">نظرات</a></li>
+                <li><a href="{% url 'website:tour_create' %}">ساخت تور</a></li>
+                {% comment %} <li><a href="tourEditing.html">ویرایش تور</a></li> {% endcomment %}
             </ul>
         </div>
     </div>
     <div class="navBarSideBar">
         <div class="profileOptions">
             <ul>
-                <li><a href="">تماس با ما</a></li>
+                <li><a href="{% url 'website:contact_us' %}">تماس با ما</a></li>
                 <li><a href="">پنل فروشندگان و خریداران</a></li>
                 <li><a href="">لیست شرکت ها</a></li>
             </ul>
