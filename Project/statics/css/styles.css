@@ -11,19 +11,21 @@ body{
   padding: 0;
   margin: 0;
 }
-body {
+html, body {
   margin: 0;
   padding: 0;
-  /* height: 100vh; */
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
-  background-color: #f0f0f0; /* fallback color */
+  height: 100%; /* Full height for html and body */
+}
+
+body {
+  background-color: #f0f0f0; /* Fallback color */
   background-image: radial-gradient(circle at top right, rgb(0, 217, 255), transparent 50%),
                     radial-gradient(circle at top left, rgb(98, 0, 255), transparent 50%),
                     radial-gradient(circle at bottom right, #0000ff, transparent 50%),
                     radial-gradient(circle at bottom left, rgb(0, 179, 255), transparent 50%);
   background-repeat: no-repeat;
+  background-size: cover; /* Ensure the background covers the entire body */
+  background-attachment: fixed; /* Lock the background in place */
 }
 .Header{
   height: 300px;
